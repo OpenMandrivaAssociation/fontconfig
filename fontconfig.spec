@@ -6,7 +6,7 @@
 Summary: Font configuration library
 Name: fontconfig
 Version: 2.4.2
-Release: %mkrel 2
+Release: %mkrel 3
 License: MIT
 Group: System/X11
 Source0: http://fontconfig.org/release/fontconfig-%{version}.tar.bz2
@@ -27,7 +27,7 @@ Source7: 30-arial-aliases.conf
 # (fc) 2.4.2-1mdv disable embedded bitmap for big size (Mdv bug #25924)
 Source8: 06-mdk-no-embeddedbitmap.conf
 # (fc) 2.1-4mdk default configuration (rawhide) + (pablo) 2.2-3mdk adds font aliases for various languages
-Patch1: fontconfig-2.4.0-defaultconfig.patch
+Patch1: fontconfig-2.4.2-defaultconfig.patch
 
 URL: http://fontconfig.org/
 BuildRoot: %{_tmppath}/fontconfig-%{version}-root
@@ -78,7 +78,7 @@ will use fontconfig.
 
 %prep
 %setup -q
-%patch1 -p1 -b .defaultconfig
+%patch1 -p0 -b .defaultconfig
 
 %build
 %configure2_5x --localstatedir=/var \
