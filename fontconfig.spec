@@ -6,7 +6,7 @@
 Summary: Font configuration library
 Name: fontconfig
 Version: 2.4.2
-Release: %mkrel 3
+Release: %mkrel 4
 License: MIT
 Group: System/X11
 Source0: http://fontconfig.org/release/fontconfig-%{version}.tar.bz2
