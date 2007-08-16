@@ -6,7 +6,7 @@
 Summary: Font configuration library
 Name: fontconfig
 Version: 2.4.2
-Release: %mkrel 4
+Release: %mkrel 5
 License: MIT
 Group: System/X11
 Source0: http://fontconfig.org/release/fontconfig-%{version}.tar.bz2
@@ -136,7 +136,7 @@ rm -f %{_var}/cache/fontconfig/*.cache-2
 %dir %{_sysconfdir}/fonts
 %dir %{_sysconfdir}/fonts/conf.d
 %dir %{_sysconfdir}/fonts/conf.avail
-%{_sysconfdir}/fonts/fonts.dtd
+%config %{_sysconfdir}/fonts/fonts.dtd
 # those files must NOT have noreplace option
 %config %{_sysconfdir}/fonts/fonts.conf
 %config %{_sysconfdir}/fonts/conf.d/*.conf
