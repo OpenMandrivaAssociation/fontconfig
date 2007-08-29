@@ -6,28 +6,32 @@
 Summary: Font configuration library
 Name: fontconfig
 Version: 2.4.2
-Release: %mkrel 5
+Release: %mkrel 6
 License: MIT
 Group: System/X11
 Source0: http://fontconfig.org/release/fontconfig-%{version}.tar.bz2
 # (fc) 2.3.2-3mdk prefer urw fonts
-Source1: 00-mdk-urwfonts.conf
+Source1: 30-mdv-urwfonts.conf
 # (fc) 2.3.2-3mdk dualwidth for CJK
-Source2: 01-mdk-CJK-dualwidth.conf
+Source2: 20-mdv-CJK-dualwidth.conf
 # (fc) 2.3.2-3mdk disable antialiasing for some fonts
-Source3: 02-mdk-disable-antialias.conf
+Source3: 20-mdv-disable-antialias.conf
 # (fc) 2.3.2-3mdk disable hinting for some fonts/languages
-Source4: 03-mdk-disable-hinting.conf
+Source4: 25-mdv-disable-hinting.conf
 # (fc) 2.3.2-3mdk  Avoid KDE/QT uses some bitmapped fonts (guisseppe)
-Source5: 04-mdk-avoid-bitmap.conf
+Source5: 30-mdv-avoid-bitmap.conf
 # (fc) 2.3.92-1mdk blacklist some fonts freetype can't handle (rawhide)
-Source6: 05-mdk-blacklist-fonts.conf
-# (fc) 2.4.0-1mdv add alias for Arial
-Source7: 30-arial-aliases.conf
+Source6: 75-mdv-blacklist-fonts.conf
+# (fc) 2.4.0-1mdv add alias for Arial and other common fonts (Fedora)
+Source7: 31-mdv-aliases.conf
 # (fc) 2.4.2-1mdv disable embedded bitmap for big size (Mdv bug #25924)
-Source8: 06-mdk-no-embeddedbitmap.conf
+Source8: 20-mdv-no-embeddedbitmap.conf
 # (fc) 2.1-4mdk default configuration (rawhide) + (pablo) 2.2-3mdk adds font aliases for various languages
 Patch1: fontconfig-2.4.2-defaultconfig.patch
+# (fc) 2.4.2-6mdv various GIT fixes
+Patch2: fontconfig-2.4.2-gitfixes.patch
+# (fc) 2.4.2-6mdv fix crash on invalid configuration (SUSE) (Novell bug #246783)
+Patch3: fontconfig-2.4.2-fixcrashonbrokenconf.patch
 
 URL: http://fontconfig.org/
 BuildRoot: %{_tmppath}/fontconfig-%{version}-root
@@ -41,6 +45,7 @@ BuildRequires: docbook-dtd41-sgml
 BuildRequires: lynx
 BuildRequires: freetype2-devel >= %{freetype_version}
 BuildRequires: libxml2-devel
+BuildRequires: libxml2-utils
 BuildRequires: autoconf2.5 >= 2.54
 
 %description
@@ -79,6 +84,8 @@ will use fontconfig.
 %prep
 %setup -q
 %patch1 -p0 -b .defaultconfig
+%patch2 -p1 -b .gitfixes
+%patch3 -p1 -b .fixcrashonbrokenconf
 
 %build
 %configure2_5x --localstatedir=/var \
@@ -109,8 +116,11 @@ cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d/00-cache.conf
 </fontconfig>
 EOF
 
-#replaced by source2
-rm -f $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d/20-fix-globaladvance.conf
+# ensure we ship only valid config files
+# copy need by dtdvalid
+cp -f $RPM_BUILD_ROOT%{_sysconfdir}/fonts/fonts.dtd $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d/
+xmllint --noout --dtdvalid $RPM_BUILD_ROOT%{_sysconfdir}/fonts/fonts.dtd $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d/??-*.conf
+rm -f $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d/fonts.dtd
 
 # remove unpackaged files
 rm -rf $RPM_BUILD_ROOT%{_datadir}/doc/fontconfig 
