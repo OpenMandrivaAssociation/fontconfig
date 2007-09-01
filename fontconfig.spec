@@ -1,12 +1,13 @@
 %define fontconfig_major 1
 %define lib_name %mklibname %{name} %{fontconfig_major}
+%define develname %mklibname %name -d
 
 %define freetype_version 2.1.7
 
 Summary: Font configuration library
 Name: fontconfig
 Version: 2.4.2
-Release: %mkrel 6
+Release: %mkrel 7
 License: MIT
 Group: System/X11
 Source0: http://fontconfig.org/release/fontconfig-%{version}.tar.bz2
@@ -26,6 +27,8 @@ Source6: 75-mdv-blacklist-fonts.conf
 Source7: 31-mdv-aliases.conf
 # (fc) 2.4.2-1mdv disable embedded bitmap for big size (Mdv bug #25924)
 Source8: 20-mdv-no-embeddedbitmap.conf
+# (fwang): 2.4.2-7mdv move wqy-bitmap font rule into fontconfig package
+Source9: 85-wqy-bitmapsong.conf
 # (fc) 2.1-4mdk default configuration (rawhide) + (pablo) 2.2-3mdk adds font aliases for various languages
 Patch1: fontconfig-2.4.2-defaultconfig.patch
 # (fc) 2.4.2-6mdv various GIT fixes
@@ -48,6 +51,9 @@ BuildRequires: libxml2-devel
 BuildRequires: libxml2-utils
 BuildRequires: autoconf2.5 >= 2.54
 
+# fwang: add conflicts to ease upgrade
+Conflicts:	x11-font-wqy-bitmapfont < 1.0-0.20070901.1
+
 %description
 Fontconfig is designed to locate fonts within the
 system and select them according to requirements specified by 
@@ -65,7 +71,7 @@ Fontconfig is designed to locate fonts within the
 system and select them according to requirements specified by 
 applications.
 
-%package -n %{lib_name}-devel
+%package -n %{develname}
 Summary: Font configuration and customization library
 Group: Development/C
 Provides: lib%{name}-devel = %{version}-%{release}
@@ -73,8 +79,9 @@ Provides: %{name}-devel = %{version}-%{release}
 Requires: %{name} = %{version}-%{release}
 Requires: %{lib_name} = %{version}-%{release}
 Requires: freetype2-devel >= %{freetype_version}
+Obsoletes: %mklibname -d %name 1
 
-%description -n %{lib_name}-devel
+%description -n %{develname}
 The fontconfig-devel package includes the header files,
 and developer docs for the fontconfig package.
 
@@ -101,7 +108,7 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d
-cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} %{SOURCE8} $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d 
+cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} %{SOURCE8} %{SOURCE9} $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d 
 
 # needed in case main config files isn't up to date
 cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d/00-cache.conf
@@ -159,7 +166,7 @@ rm -f %{_var}/cache/fontconfig/*.cache-2
 %defattr(-, root, root)
 %{_libdir}/*.so.*
 
-%files -n %{lib_name}-devel
+%files -n %{develname}
 %defattr(-, root, root)
 %doc doc/fontconfig-devel doc/fontconfig-devel.txt 
 %{_libdir}/*.la
@@ -168,5 +175,3 @@ rm -f %{_var}/cache/fontconfig/*.cache-2
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
 %{_mandir}/man3/*
-
-
