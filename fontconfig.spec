@@ -7,7 +7,7 @@
 Summary: Font configuration library
 Name: fontconfig
 Version: 2.4.2
-Release: %mkrel 8
+Release: %mkrel 9
 License: MIT
 Group: System/X11
 Source0: http://fontconfig.org/release/fontconfig-%{version}.tar.bz2
@@ -35,6 +35,8 @@ Patch1: fontconfig-2.4.2-defaultconfig.patch
 Patch2: fontconfig-2.4.2-gitfixes.patch
 # (fc) 2.4.2-6mdv fix crash on invalid configuration (SUSE) (Novell bug #246783)
 Patch3: fontconfig-2.4.2-fixcrashonbrokenconf.patch
+# (fc) 2.4.2-9mdv fix duplicated pattern in Qt (SUSE) (Mdv bug #34753, Novell bug #244579)
+Patch4: fontconfig-2.4.2-pattern-duplicate.patch
 
 URL: http://fontconfig.org/
 BuildRoot: %{_tmppath}/fontconfig-%{version}-root
@@ -93,6 +95,7 @@ will use fontconfig.
 %patch1 -p0 -b .defaultconfig
 %patch2 -p1 -b .gitfixes
 %patch3 -p1 -b .fixcrashonbrokenconf
+%patch4 -p1 -b .pattern-duplicate
 
 %build
 %configure2_5x --localstatedir=/var \
