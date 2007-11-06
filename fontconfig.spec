@@ -6,11 +6,11 @@
 
 Summary: Font configuration library
 Name: fontconfig
-Version: 2.4.2
-Release: %mkrel 9
+Version: 2.4.92
+Release: %mkrel 1
 License: MIT
 Group: System/X11
-Source0: http://fontconfig.org/release/fontconfig-%{version}.tar.bz2
+Source0: http://fontconfig.org/release/fontconfig-%{version}.tar.gz
 # (fc) 2.3.2-3mdk prefer urw fonts
 Source1: 30-mdv-urwfonts.conf
 # (fc) 2.3.2-3mdk dualwidth for CJK
@@ -18,25 +18,17 @@ Source2: 20-mdv-CJK-dualwidth.conf
 # (fc) 2.3.2-3mdk disable antialiasing for some fonts
 Source3: 20-mdv-disable-antialias.conf
 # (fc) 2.3.2-3mdk disable hinting for some fonts/languages
-Source4: 25-mdv-disable-hinting.conf
+Source4: 25-mdv-CJK-disable-hinting.conf
 # (fc) 2.3.2-3mdk  Avoid KDE/QT uses some bitmapped fonts (guisseppe)
 Source5: 30-mdv-avoid-bitmap.conf
-# (fc) 2.3.92-1mdk blacklist some fonts freetype can't handle (rawhide)
-Source6: 75-mdv-blacklist-fonts.conf
-# (fc) 2.4.0-1mdv add alias for Arial and other common fonts (Fedora)
-Source7: 31-mdv-aliases.conf
 # (fc) 2.4.2-1mdv disable embedded bitmap for big size (Mdv bug #25924)
-Source8: 20-mdv-no-embeddedbitmap.conf
+Source8: 26-mdv-no-embeddedbitmap.conf
 # (fwang): 2.4.2-7mdv move wqy-bitmap font rule into fontconfig package
 Source9: 85-wqy-bitmapsong.conf
+# (fc) 2.4.92-1mdv enable embeddedbitmap on some CJK fonts (Fedora)
+Source10: 25-no-bitmap-fedora.conf
 # (fc) 2.1-4mdk default configuration (rawhide) + (pablo) 2.2-3mdk adds font aliases for various languages
-Patch1: fontconfig-2.4.2-defaultconfig.patch
-# (fc) 2.4.2-6mdv various GIT fixes
-Patch2: fontconfig-2.4.2-gitfixes.patch
-# (fc) 2.4.2-6mdv fix crash on invalid configuration (SUSE) (Novell bug #246783)
-Patch3: fontconfig-2.4.2-fixcrashonbrokenconf.patch
-# (fc) 2.4.2-9mdv fix duplicated pattern in Qt (SUSE) (Mdv bug #34753, Novell bug #244579)
-Patch4: fontconfig-2.4.2-pattern-duplicate.patch
+Patch1: fontconfig-mdvconfig.patch
 
 URL: http://fontconfig.org/
 BuildRoot: %{_tmppath}/fontconfig-%{version}-root
@@ -92,10 +84,7 @@ will use fontconfig.
 
 %prep
 %setup -q
-%patch1 -p0 -b .defaultconfig
-%patch2 -p1 -b .gitfixes
-%patch3 -p1 -b .fixcrashonbrokenconf
-%patch4 -p1 -b .pattern-duplicate
+%patch1 -p1 -b .mdvconfig
 
 %build
 %configure2_5x --localstatedir=/var \
@@ -111,7 +100,7 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d
-cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} %{SOURCE8} %{SOURCE9} $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d 
+cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE9} %{SOURCE10} $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d 
 
 # needed in case main config files isn't up to date
 cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d/00-cache.conf
@@ -125,6 +114,8 @@ cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d/00-cache.conf
 
 </fontconfig>
 EOF
+
+ln -s ../conf.avail/25-unhint-nonlatin.conf $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d
 
 # ensure we ship only valid config files
 # copy need by dtdvalid
