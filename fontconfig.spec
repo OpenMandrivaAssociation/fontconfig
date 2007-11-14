@@ -6,7 +6,7 @@
 
 Summary: Font configuration library
 Name: fontconfig
-Version: 2.4.92
+Version: 2.5.0
 Release: %mkrel 1
 License: MIT
 Group: System/X11
