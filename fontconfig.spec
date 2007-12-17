@@ -31,7 +31,6 @@ Source10: 25-no-bitmap-fedora.conf
 Patch1: fontconfig-mdvconfig.patch
 
 URL: http://fontconfig.org/
-BuildRoot: %{_tmppath}/fontconfig-%{version}-root
 
 Requires(post): %{lib_name}  >= %{version}-%{release}
 BuildRequires:	ed
