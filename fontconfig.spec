@@ -129,15 +129,15 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/doc/fontconfig
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%triggerprein -- fontconfig < 2.4.0
-rm -f %{_var}/cache/fontconfig/*.cache-2
-
 %post
 %{_bindir}/fc-cache --force --system-only >/dev/null
 
 %post -n %{lib_name} -p /sbin/ldconfig
 
 %postun -n %{lib_name} -p /sbin/ldconfig
+
+%triggerprein -- fontconfig < 2.4.0
+rm -f %{_var}/cache/fontconfig/*.cache-2
 
 %files
 %defattr(-, root, root)
