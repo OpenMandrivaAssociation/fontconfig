@@ -2,12 +2,12 @@
 %define lib_name %mklibname %{name} %{fontconfig_major}
 %define develname %mklibname %name -d
 
-%define freetype_version 2.1.7
+%define freetype_version 2.3.5
 
 Summary: Font configuration library
 Name: fontconfig
 Version: 2.5.0
-Release: %mkrel 1
+Release: %mkrel 2
 License: MIT
 Group: System/X11
 Source0: http://fontconfig.org/release/fontconfig-%{version}.tar.gz
@@ -34,16 +34,16 @@ URL: http://fontconfig.org/
 BuildRoot: %{_tmppath}/fontconfig-%{version}-root
 
 Requires(post): %{lib_name}  >= %{version}-%{release}
-BuildRequires:	ed
+BuildRequires: freetype2-devel >= %{freetype_version}
+
+BuildRequires: ed
 BuildRequires: docbook-utils
 BuildRequires: docbook-utils-pdf
 BuildRequires: docbook-dtd31-sgml
 BuildRequires: docbook-dtd41-sgml
 BuildRequires: lynx
-BuildRequires: freetype2-devel >= %{freetype_version}
 BuildRequires: libxml2-devel
 BuildRequires: libxml2-utils
-BuildRequires: autoconf2.5 >= 2.54
 
 # fwang: add conflicts to ease upgrade
 Conflicts:	x11-font-wqy-bitmapfont < 1.0-0.20070901.1
