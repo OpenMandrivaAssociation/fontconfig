@@ -151,8 +151,8 @@ rm -f %{_var}/cache/fontconfig/*.cache-2
 # those files must NOT have noreplace option
 %config %{_sysconfdir}/fonts/fonts.conf
 %config %{_sysconfdir}/fonts/conf.d/*.conf
+%config %{_sysconfdir}/fonts/conf.d/README
 %config %{_sysconfdir}/fonts/conf.avail/*.conf
-%config %{_sysconfdir}/fonts/conf.avail/README
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 
