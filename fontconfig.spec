@@ -6,7 +6,7 @@
 
 Summary: Font configuration library
 Name: fontconfig
-Version: 2.5.93
+Version: 2.6.0
 Release: %mkrel 1
 License: MIT
 Group: System/X11
@@ -27,7 +27,7 @@ Source8: 26-mdv-no-embeddedbitmap.conf
 Source9: 85-wqy-bitmapsong.conf
 # (fc) 2.4.92-1mdv enable embeddedbitmap on some CJK fonts (Fedora)
 Source10: 25-no-bitmap-fedora.conf
-# (fc) 2.1-4mdk default configuration (rawhide) + (pablo) 2.2-3mdk adds font aliases for various languages
+# (fc) 2.1-4mdk change order of default fonts
 Patch1: fontconfig-mdvconfig.patch
 
 URL: http://fontconfig.org/
