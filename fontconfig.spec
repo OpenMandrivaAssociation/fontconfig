@@ -7,7 +7,7 @@
 Summary: Font configuration library
 Name: fontconfig
 Version: 2.6.0
-Release: %mkrel 3
+Release: %mkrel 4
 License: MIT
 Group: System/X11
 Source0: http://fontconfig.org/release/fontconfig-%{version}.tar.gz
@@ -88,7 +88,7 @@ will use fontconfig.
 
 %build
 %configure2_5x --localstatedir=/var \
-   --with-add-fonts="/usr/lib/X11/fonts,/usr/X11R6/lib/X11/fonts,/opt/ttfonts,/usr/share/yudit/fonts" \
+   --with-add-fonts="/usr/lib/X11/fonts,/usr/X11R6/lib/X11/fonts,/opt/ttfonts" \
    --enable-libxml2
 
 %make
