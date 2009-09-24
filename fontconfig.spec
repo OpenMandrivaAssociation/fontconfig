@@ -4,7 +4,13 @@
 
 %define freetype_version 2.3.5
 
+%define bootstrap 0
+%{?_without_bootstrap: %global bootstrap 0}
+%{?_with_bootstrap: %global bootstrap 1}
 %define rebuild_doc	1
+%if %{bootstrap}
+%define rebuild_doc 0
+%endif
 
 Summary: Font configuration library
 Name: fontconfig
