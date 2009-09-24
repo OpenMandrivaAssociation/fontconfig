@@ -4,6 +4,8 @@
 
 %define freetype_version 2.3.5
 
+%define rebuild_doc	1
+
 Summary: Font configuration library
 Name: fontconfig
 Version: 2.7.3
@@ -37,10 +39,12 @@ Requires(post): %{lib_name}  >= %{version}-%{release}
 BuildRequires: freetype2-devel >= %{freetype_version}
 
 BuildRequires: ed
+%if %rebuild_doc
 BuildRequires: docbook-utils
 BuildRequires: docbook-utils-pdf
 BuildRequires: docbook-dtd31-sgml
 BuildRequires: docbook-dtd41-sgml
+%endif
 BuildRequires: lynx
 BuildRequires: libxml2-devel
 BuildRequires: libxml2-utils
@@ -87,6 +91,10 @@ will use fontconfig.
 %patch1 -p1 -b .mdvconfig
 
 %build
+%if !%rebuild_doc
+export HASDOCBOOK=no
+%endif
+
 %configure2_5x --localstatedir=/var \
    --with-add-fonts="/usr/lib/X11/fonts,/usr/X11R6/lib/X11/fonts,/opt/ttfonts" \
    --enable-libxml2
