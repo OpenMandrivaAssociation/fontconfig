@@ -15,7 +15,7 @@
 Summary: Font configuration library
 Name: fontconfig
 Version: 2.7.3
-Release: %mkrel 1
+Release: %mkrel 2
 License: MIT
 Group: System/X11
 Source0: http://fontconfig.org/release/fontconfig-%{version}.tar.gz
