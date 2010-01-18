@@ -15,7 +15,7 @@
 Summary: Font configuration library
 Name: fontconfig
 Version: 2.8.0
-Release: %mkrel 1
+Release: %mkrel 2
 License: MIT
 Group: System/X11
 Source0: http://fontconfig.org/release/fontconfig-%{version}.tar.gz
@@ -35,6 +35,9 @@ Source8: 26-mdv-no-embeddedbitmap.conf
 Source9: 85-wqy-bitmapsong.conf
 # (fc) 2.4.92-1mdv enable embeddedbitmap on some CJK fonts (Fedora)
 Source10: 25-no-bitmap-fedora.conf
+# (pz) rpm filetriggers to update cache
+Source11: fc-cache.filter
+Source12: fc-cache.script
 # (fc) 2.1-4mdk change order of default fonts
 Patch1: fontconfig-mdvconfig.patch
 
@@ -140,6 +143,11 @@ rm -f $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d/fonts.dtd
 # remove unpackaged files
 rm -rf $RPM_BUILD_ROOT%{_datadir}/doc/fontconfig 
 
+# install filetriggers
+install -d -m 0755 $RPM_BUILD_ROOT%{_var}/lib/rpm/filetriggers
+install -m 0644 %{SOURCE11} $RPM_BUILD_ROOT%{_var}/lib/rpm/filetriggers
+install -m 0755 %{SOURCE12} $RPM_BUILD_ROOT%{_var}/lib/rpm/filetriggers
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -173,6 +181,7 @@ rm -f %{_var}/cache/fontconfig/*.cache-2
 %config %{_sysconfdir}/fonts/conf.avail/*.conf
 %{_mandir}/man1/*
 %{_mandir}/man5/*
+%{_var}/lib/rpm/filetriggers/fc-cache.*
 
 %files -n %{lib_name}
 %defattr(-, root, root)
