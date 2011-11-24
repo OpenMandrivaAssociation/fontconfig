@@ -1,8 +1,6 @@
-%define fontconfig_major 1
-%define lib_name %mklibname %{name} %{fontconfig_major}
-%define develname %mklibname %name -d
-
-%define freetype_version 2.3.5
+%define major 1
+%define lib_name %mklibname %{name} %{major}
+%define develname %mklibname %{name} -d
 
 %define bootstrap 0
 %{?_without_bootstrap: %global bootstrap 0}
@@ -15,9 +13,10 @@
 Summary: Font configuration library
 Name: fontconfig
 Version: 2.8.0
-Release: %mkrel 7
+Release: 8
 License: MIT
 Group: System/X11
+URL: http://fontconfig.org/
 Source0: http://fontconfig.org/release/fontconfig-%{version}.tar.gz
 # (fc) 2.3.2-3mdk prefer urw fonts
 Source1: 30-mdv-urwfonts.conf
@@ -38,23 +37,20 @@ Source10: 25-no-bitmap-fedora.conf
 # (fc) 2.1-4mdk change order of default fonts
 Patch1: fontconfig-mdvconfig.patch
 
-URL: http://fontconfig.org/
-BuildRoot: %{_tmppath}/fontconfig-%{version}-root
-
-Requires(post): %{lib_name}  >= %{version}-%{release}
-BuildRequires: freetype2-devel >= %{freetype_version}
-
 BuildRequires: ed
+BuildRequires: libxml2-utils
+BuildRequires: lynx
+BuildRequires: pkgconfig(freetype2) >= 2.3.5
+BuildRequires: pkgconfig(libxml-2.0)
 %if %rebuild_doc
 BuildRequires: docbook-utils
 BuildRequires: docbook-utils-pdf
 BuildRequires: docbook-dtd31-sgml
 BuildRequires: docbook-dtd41-sgml
 %endif
-BuildRequires: lynx
-BuildRequires: libxml2-devel
-BuildRequires: libxml2-utils
 
+Provides: lib%{name} = %{version}-%{release}
+Provides: %{name}-libs = %{version}-%{release}
 # fwang: add conflicts to ease upgrade
 Conflicts:	x11-font-wqy-bitmapfont < 1.0-0.20070901.1
 
@@ -66,9 +62,6 @@ applications.
 %package -n %{lib_name}
 Summary: Font configuration and customization library
 Group: System/Libraries
-Requires: %{name} >= %{version}-%{release}
-Provides: lib%{name} = %{version}-%{release}
-Provides: %{name}-libs = %{version}-%{release}
 
 %description -n %{lib_name}
 Fontconfig is designed to locate fonts within the
@@ -78,12 +71,9 @@ applications.
 %package -n %{develname}
 Summary: Font configuration and customization library
 Group: Development/C
-Provides: lib%{name}-devel = %{version}-%{release}
 Provides: %{name}-devel = %{version}-%{release}
-Requires: %{name} = %{version}-%{release}
 Requires: %{lib_name} = %{version}-%{release}
-Requires: freetype2-devel >= %{freetype_version}
-Obsoletes: %mklibname -d %name 1
+Obsoletes: %mklibname -d %{name} 1
 
 %description -n %{develname}
 The fontconfig-devel package includes the header files,
@@ -94,30 +84,31 @@ will use fontconfig.
 
 %prep
 %setup -q
-%patch1 -p1 -b .mdvconfig
+%apply_patches
 
 %build
 %if !%rebuild_doc
 export HASDOCBOOK=no
 %endif
 
-%configure2_5x --localstatedir=/var \
-   --with-add-fonts="/usr/lib/X11/fonts,/usr/X11R6/lib/X11/fonts,/opt/ttfonts" \
-   --enable-libxml2
+%configure2_5x \
+	--disable-static \
+	--localstatedir=/var \
+	--with-add-fonts="/usr/lib/X11/fonts,/usr/X11R6/lib/X11/fonts,/opt/ttfonts" \
+	--enable-libxml2
 
 %make
 
-make check
-
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
+find %{buildroot} -name "*.la" -delete
 
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d
-cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE9} %{SOURCE10} $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d 
+mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
+cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE9} %{SOURCE10} %{buildroot}%{_sysconfdir}/fonts/conf.d 
 
 # needed in case main config files isn't up to date
-cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d/00-cache.conf
+cat << EOF > %{buildroot}%{_sysconfdir}/fonts/conf.d/00-cache.conf
 <?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 <fontconfig>
@@ -129,30 +120,22 @@ cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d/00-cache.conf
 </fontconfig>
 EOF
 
-ln -s ../conf.avail/25-unhint-nonlatin.conf $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d
+ln -s ../conf.avail/25-unhint-nonlatin.conf %{buildroot}%{_sysconfdir}/fonts/conf.d
 
 # ensure we ship only valid config files
 # copy need by dtdvalid
-cp -f $RPM_BUILD_ROOT%{_sysconfdir}/fonts/fonts.dtd $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d/
-xmllint --noout --dtdvalid $RPM_BUILD_ROOT%{_sysconfdir}/fonts/fonts.dtd $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d/??-*.conf
-rm -f $RPM_BUILD_ROOT%{_sysconfdir}/fonts/conf.d/fonts.dtd
+cp -f %{buildroot}%{_sysconfdir}/fonts/fonts.dtd %{buildroot}%{_sysconfdir}/fonts/conf.d/
+xmllint --noout --dtdvalid %{buildroot}%{_sysconfdir}/fonts/fonts.dtd %{buildroot}%{_sysconfdir}/fonts/conf.d/??-*.conf
+rm -f %{buildroot}%{_sysconfdir}/fonts/conf.d/fonts.dtd
 
 # remove unpackaged files
-rm -rf $RPM_BUILD_ROOT%{_datadir}/doc/fontconfig 
+rm -rf %{buildroot}%{_datadir}/doc/fontconfig 
 
-%clean
-rm -rf $RPM_BUILD_ROOT
+%check
+make check
 
 %post
 %{_bindir}/fc-cache --force --system-only >/dev/null
-
-%if %mdkversion < 200900
-%post -n %{lib_name} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{lib_name} -p /sbin/ldconfig
-%endif
 
 %triggerprein -- fontconfig < 2.4.0
 rm -f %{_var}/cache/fontconfig/*.cache-2
@@ -164,7 +147,6 @@ rm -f %{_var}/cache/fontconfig/*.cache-2
 %{_bindir}/fc-cache -s
 
 %files
-%defattr(-, root, root)
 %doc README AUTHORS COPYING doc/fontconfig-user.html doc/fontconfig-user.txt
 %dir %{_var}/cache/fontconfig
 %{_bindir}/*
@@ -181,15 +163,12 @@ rm -f %{_var}/cache/fontconfig/*.cache-2
 %{_mandir}/man5/*
 
 %files -n %{lib_name}
-%defattr(-, root, root)
-%{_libdir}/*.so.*
+%{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
-%defattr(-, root, root)
 %doc doc/fontconfig-devel doc/fontconfig-devel.txt 
-%{_libdir}/*.la
-%{_libdir}/*.a
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
 %{_mandir}/man3/*
+
