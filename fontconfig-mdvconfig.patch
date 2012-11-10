@@ -1,0 +1,102 @@
+From 9c13b7ce84eb18bb344dff872fe1868919bbad77 Mon Sep 17 00:00:00 2001
+From: Frederic Crozat <fcrozat@mandriva.com>
+Date: Thu, 25 Jun 2009 11:34:31 +0200
+Subject: [PATCH] Mandriva configuration
+
+---
+ conf.d/60-latin.conf    |   16 ++++++++--------
+ conf.d/65-nonlatin.conf |    5 ++++-
+ 2 files changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/conf.d/60-latin.conf b/conf.d/60-latin.conf
+index 2107e31..dc1205f 100644
+--- a/conf.d/60-latin.conf
++++ b/conf.d/60-latin.conf
+@@ -4,8 +4,8 @@
+ 	<alias>
+ 		<family>serif</family>
+ 		<prefer>
+-			<family>Bitstream Vera Serif</family>
+ 			<family>DejaVu Serif</family>
++			<family>Bitstream Vera Serif</family>
+ 			<family>Times New Roman</family>
+ 			<family>Thorndale AMT</family>
+ 			<family>Luxi Serif</family>
+@@ -16,14 +16,14 @@
+ 	<alias>
+ 		<family>sans-serif</family>
+ 		<prefer>
+-			<family>Bitstream Vera Sans</family>
+ 			<family>DejaVu Sans</family>
+-			<family>Verdana</family>
+-			<family>Arial</family>
+-			<family>Albany AMT</family>
++			<family>Bitstream Vera Sans</family>
+ 			<family>Luxi Sans</family>
+ 			<family>Nimbus Sans L</family>
++			<family>Arial</family>
++			<family>Albany AMT</family>
+ 			<family>Helvetica</family>
++			<family>Verdana</family>
+ 			<family>Lucida Sans Unicode</family>
+ 			<family>BPG Glaho International</family> <!-- lat,cyr,arab,geor -->
+ 			<family>Tahoma</family> <!-- lat,cyr,greek,heb,arab,thai -->
+@@ -32,14 +32,14 @@
+ 	<alias>
+ 		<family>monospace</family>
+ 		<prefer>
+-			<family>Bitstream Vera Sans Mono</family>
+ 			<family>DejaVu Sans Mono</family>
++			<family>Bitstream Vera Sans Mono</family>
+ 			<family>Inconsolata</family>
++			<family>Luxi Mono</family>
++			<family>Nimbus Mono L</family>
+ 			<family>Andale Mono</family>
+ 			<family>Courier New</family>
+ 			<family>Cumberland AMT</family>
+-			<family>Luxi Mono</family>
+-			<family>Nimbus Mono L</family>
+ 			<family>Courier</family>
+ 		</prefer>
+ 	</alias>
+diff --git a/conf.d/65-nonlatin.conf b/conf.d/65-nonlatin.conf
+index 53ac064..1505327 100644
+diff -Naur a/conf.d/60-latin.conf b/conf.d/60-latin.conf
+diff -Naur a/conf.d/65-nonlatin.conf b/conf.d/65-nonlatin.conf
+--- a/conf.d/65-nonlatin.conf	2012-03-10 06:24:45.000000000 +0000
++++ b/conf.d/65-nonlatin.conf	2012-04-15 17:46:48.678529071 +0000
+@@ -26,9 +26,11 @@
+ 			<family>MS Mincho</family> <!-- han (ja) -->
+ 			<family>SimSun</family> <!-- han (zh-cn,zh-tw) -->
+ 			<family>PMingLiu</family> <!-- han (zh-tw) -->
++			<family>WenQuanYi Micro Hei</family> <!-- han (zh-cn,zh-tw) -->
+ 			<family>WenQuanYi Zen Hei</family> <!-- han (zh-cn,zh-tw) -->
+ 			<family>WenQuanYi Bitmap Song</family> <!-- han (zh-cn,zh-tw) -->
+ 			<family>AR PL ShanHeiSun Uni</family> <!-- han (ja,zh-cn,zh-tw) -->
++			<family>AR PL UMing CN</family> <!--han (ja,zh-cn,zh-tw) -->
+ 			<family>AR PL New Sung</family> <!-- han (zh-cn,zh-tw) -->
+ 			<family>ZYSong18030</family> <!-- han (zh-cn,zh-tw) -->
+ 			<family>HanyiSong</family> <!-- han (zh-cn,zh-tw) -->
+@@ -99,9 +101,11 @@
+ 			<!-- chinese fonts are actually serifed -->
+ 			<family>SimSun</family> <!-- han (zh-cn,zh-tw) -->
+ 			<family>PMingLiu</family> <!-- han (zh-tw) -->
++			<family>WenQuanYi Micro Hei</family> <!-- han (zh-cn,zh-tw) -->
+ 			<family>WenQuanYi Zen Hei</family> <!-- han (zh-cn,zh-tw) -->
+ 			<family>WenQuanYi Bitmap Song</family> <!-- han (zh-cn,zh-tw) -->
+ 			<family>AR PL ShanHeiSun Uni</family> <!--han (ja,zh-cn,zh-tw) -->
++			<family>AR PL UMing CN</family> <!--han (ja,zh-cn,zh-tw) -->
+ 			<family>AR PL New Sung</family> <!-- han (zh-cn,zh-tw) -->
+ 			<family>MgOpen Modata</family>
+ 			<family>VL Gothic</family>
+@@ -155,7 +159,9 @@
+ 			<family>UmePlus Gothic</family> <!-- han (ja) -->
+ 			<family>NSimSun</family> <!-- han (zh-cn,zh-tw) -->
+ 			<family>MingLiu</family> <!-- han (zh-tw) -->
+-			<family>AR PL ShanHeiSun Uni</family> <!-- han (ja,zh-cn,zh-tw) -->
++			<family>WenQuanYi Micro Hei Mono</family> <!-- han (zh-cn,zh-tw) -->
++			<family>WenQuanYi Zen Hei Mono</family> <!-- han (zh-cn,zh-tw) -->
++			<family>AR PL UMing CN</family> <!-- han (ja,zh-cn,zh-tw) -->
+ 			<family>AR PL New Sung Mono</family> <!-- han (zh-cn,zh-tw) -->
+ 			<family>HanyiSong</family> <!-- han (zh-cn) -->
+ 			<family>AR PL SungtiL GB</family>

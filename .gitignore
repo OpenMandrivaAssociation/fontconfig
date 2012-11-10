@@ -1,0 +1,9 @@
+20-mdv-CJK-dualwidth.conf
+20-mdv-disable-antialias.conf
+25-mdv-CJK-disable-hinting.conf
+25-no-bitmap-fedora.conf
+26-mdv-no-embeddedbitmap.conf
+30-mdv-avoid-bitmap.conf
+30-mdv-urwfonts.conf
+85-wqy-bitmapsong.conf
+fontconfig-2.10.1.tar.gz
