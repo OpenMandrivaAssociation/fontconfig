@@ -1,10 +1,2 @@
 sources:
-  "20-mdv-CJK-dualwidth.conf:"	9a855783a5c0223c99fc13048eaeb17697a00152
-  "20-mdv-disable-antialias.conf:"	27244e8f6e6838e66fa7cda581ea96a497b4f080
-  "25-mdv-CJK-disable-hinting.conf:"	d053713c09f91e21c7b76023a6e83f17cd27e0e7
-  "25-no-bitmap-fedora.conf:"	aacd92abcc910f92734a45d3757a13dbe834b1b0
-  "26-mdv-no-embeddedbitmap.conf:"	628d8cd154bcc644896a32e4f48824a4e478e2db
-  "30-mdv-avoid-bitmap.conf:"	64967eef44479b192e439d43b0b238113d8f7b3f
-  "30-mdv-urwfonts.conf:"	58fb76e5986149f2cb97383f775317288252a9c3
-  "85-wqy-bitmapsong.conf:"	e7cf1c455f5be02f4f85bff11c99efee532f95c4
-  "fontconfig-2.10.1.tar.gz:"	e377cbe989cd22d3a10020309c906ecbbcac0043
+  "fontconfig-2.10.1.tar.bz2": c51c9865047a9546f41cedefbf955cc9bd846517
