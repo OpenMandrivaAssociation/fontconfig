@@ -13,7 +13,7 @@
 Summary:	Font configuration library
 Name:		fontconfig
 Version:	2.10.2
-Release:	2
+Release:	3
 License:	MIT
 Group:		System/X11
 URL:		http://fontconfig.org/
@@ -29,12 +29,12 @@ Source8:	26-mdv-no-embeddedbitmap.conf
 # (fc) 2.4.92-1mdv enable embeddedbitmap on some CJK fonts (Fedora)
 Source10:	25-no-bitmap-fedora.conf
 # (fc) 2.1-4mdk change order of default fonts
-Source11: fc-cache.filter
-Source12: fc-cache.script
+Source11:	fc-cache.filter
+Source12:	fc-cache.script
 Patch1:		fontconfig-mdvconfig.patch
 
 BuildRequires:	ed
-#BuildRequires:	ibxml2-utils
+BuildRequires:	ibxml2-utils
 BuildRequires:	lynx
 BuildRequires:	pkgconfig(freetype2) >= 2.3.5
 BuildRequires:	pkgconfig(libxml-2.0)
@@ -85,6 +85,10 @@ will use fontconfig.
 %apply_patches
 
 %build
+# (tpg) rebuild just to nuke rpath
+libtoolize -f
+autoreconf -f
+
 %if !%rebuild_doc
 export HASDOCBOOK=no
 %endif
