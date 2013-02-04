@@ -87,7 +87,7 @@ will use fontconfig.
 %build
 # (tpg) rebuild just to nuke rpath
 libtoolize -f
-autoreconf -f
+autoreconf -fi
 
 %if !%rebuild_doc
 export HASDOCBOOK=no
