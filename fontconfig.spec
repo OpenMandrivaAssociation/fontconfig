@@ -34,7 +34,7 @@ Source12:	fc-cache.script
 Patch1:		fontconfig-mdvconfig.patch
 
 BuildRequires:	ed
-BuildRequires:	ibxml2-utils
+BuildRequires:	libxml2-utils
 BuildRequires:	lynx
 BuildRequires:	pkgconfig(freetype2) >= 2.3.5
 BuildRequires:	pkgconfig(libxml-2.0)
