@@ -5,7 +5,7 @@
 %define bootstrap 0
 %{?_without_bootstrap: %global bootstrap 0}
 %{?_with_bootstrap: %global bootstrap 1}
-%define rebuild_doc	1
+%define rebuild_doc	0
 %if %{bootstrap}
 %define rebuild_doc 0
 %endif
@@ -13,7 +13,7 @@
 Summary:	Font configuration library
 Name:		fontconfig
 Version:	2.10.91
-Release:	1
+Release:	2
 License:	MIT
 Group:		System/X11
 URL:		http://fontconfig.org/
