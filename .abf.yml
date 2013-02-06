@@ -1,4 +1,5 @@
 removed_sources:
   fontconfig-2.10.1.tar.bz2: c51c9865047a9546f41cedefbf955cc9bd846517
-sources:
   fontconfig-2.10.2.tar.bz2: f20e4165d7706857fb9614a195c27434e2eb1fc5
+sources:
+  fontconfig-2.10.91.tar.bz2: 39aeb881c422fa0f0cd5e044ed05c94835fd89c4
