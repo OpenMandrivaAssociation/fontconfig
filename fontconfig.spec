@@ -2,7 +2,7 @@
 %define lib_name %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
-%define bootstrap 0
+%define bootstrap 1
 %{?_without_bootstrap: %global bootstrap 0}
 %{?_with_bootstrap: %global bootstrap 1}
 %define rebuild_doc	0
@@ -36,6 +36,7 @@ Patch1:		fontconfig-mdvconfig.patch
 BuildRequires:	ed
 BuildRequires:	libxml2-utils
 BuildRequires:	lynx
+BuildRequires:	bzip2-devel
 BuildRequires:	pkgconfig(freetype2) >= 2.3.5
 BuildRequires:	pkgconfig(libxml-2.0)
 %if %rebuild_doc
@@ -96,10 +97,11 @@ export HASDOCBOOK=no
 %configure2_5x \
 	--disable-static \
 	--localstatedir=/var \
+	--disable-libxml2 \
 	--with-add-fonts="/usr/lib/X11/fonts,/usr/X11R6/lib/X11/fonts,/opt/ttfonts" \
 	--enable-libxml2
 
-%make
+%make LIBS="-lbz2"
 
 %install
 %makeinstall_std
