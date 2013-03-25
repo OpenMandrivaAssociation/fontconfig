@@ -34,6 +34,7 @@ Source12:	fc-cache.script
 Patch1:		fontconfig-mdvconfig.patch
 Patch2:		0001-Fix-crash-with-FcConfigSetCurrent-NULL.patch
 Patch3:		0001-Fix-fc-cache-crash-caused-by-looking-up-NULL-object-.patch
+Patch4:		0001-Fix-a-SIGSEGV-on-FcPatternGet-with-NULL-pattern.patch
 BuildRequires:	ed
 BuildRequires:	libxml2-utils
 BuildRequires:	lynx
