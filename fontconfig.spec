@@ -51,8 +51,6 @@ BuildRequires:	docbook-dtd31-sgml
 BuildRequires:	docbook-dtd41-sgml
 %endif
 
-Provides:	lib%{name} = %{version}-%{release}
-Provides:	%{name}-libs = %{version}-%{release}
 # fwang: add conflicts to ease upgrade
 Conflicts:	x11-font-wqy-bitmapfont < 1.0-0.20070901.1
 
