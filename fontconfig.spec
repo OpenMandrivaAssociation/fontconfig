@@ -86,12 +86,11 @@ will use fontconfig.
 %prep
 %setup -q
 %apply_patches
-
-%build
 # (tpg) rebuild just to nuke rpath
 libtoolize -f
 autoreconf -fi
 
+%build
 %if !%rebuild_doc
 export HASDOCBOOK=no
 %endif
