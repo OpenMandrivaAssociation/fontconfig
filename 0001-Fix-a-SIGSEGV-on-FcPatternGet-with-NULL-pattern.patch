@@ -1,0 +1,25 @@
+From c758206e8c0e5b572bd34183b184ef4361745333 Mon Sep 17 00:00:00 2001
+From: Akira TAGOH <akira@tagoh.org>
+Date: Thu, 21 Mar 2013 11:58:06 +0900
+Subject: [PATCH] Fix a SIGSEGV on FcPatternGet* with NULL pattern
+
+---
+ src/fcpat.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/fcpat.c b/src/fcpat.c
+index b3b155d..25bff64 100644
+--- a/src/fcpat.c
++++ b/src/fcpat.c
+@@ -843,6 +843,8 @@ FcPatternObjectGet (const FcPattern *p, FcObject object, int id, FcValue *v)
+     FcPatternElt   *e;
+     FcValueListPtr l;
+ 
++    if (!p)
++	return FcResultNoMatch;
+     e = FcPatternObjectFindElt (p, object);
+     if (!e)
+ 	return FcResultNoMatch;
+-- 
+1.8.1.3
+

@@ -32,7 +32,7 @@ Source10:	25-no-bitmap-fedora.conf
 Source11:	fc-cache.filter
 Source12:	fc-cache.script
 Patch1:		fontconfig-mdvconfig.patch
-
+Patch2:		0001-Fix-crash-with-FcConfigSetCurrent-NULL.patch
 BuildRequires:	ed
 BuildRequires:	libxml2-utils
 BuildRequires:	lynx
