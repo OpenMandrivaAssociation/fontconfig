@@ -133,9 +133,6 @@ install -d -m 0755 %{buildroot}%{_var}/lib/rpm/filetriggers
 install -m 0644 %{SOURCE11} %{buildroot}%{_var}/lib/rpm/filetriggers
 install -m 0755 %{SOURCE12} %{buildroot}%{_var}/lib/rpm/filetriggers
 
-# we don't want these
-find %{buildroot} -name "*.la" -delete
-
 %post
 %{_bindir}/fc-cache --force --system-only >/dev/null
 
