@@ -59,22 +59,22 @@ Fontconfig is designed to locate fonts within the
 system and select them according to requirements specified by 
 applications.
 
-%package -n %{lib_name}
+%package -n	%{lib_name}
 Summary:	Font configuration and customization library
 Group:		System/Libraries
 
-%description -n %{lib_name}
+%description -n	%{lib_name}
 Fontconfig is designed to locate fonts within the
 system and select them according to requirements specified by 
 applications.
 
-%package -n %{develname}
+%package -n	%{develname}
 Summary:	Font configuration and customization library
 Group:		Development/C
 Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{lib_name} = %{version}-%{release}
 
-%description -n %{develname}
+%description -n	%{develname}
 The fontconfig-devel package includes the header files,
 and developer docs for the fontconfig package.
 
