@@ -12,8 +12,8 @@
 
 Summary:	Font configuration library
 Name:		fontconfig
-Version:	2.10.91
-Release:	2
+Version:	2.10.93
+Release:	1
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
@@ -32,9 +32,6 @@ Source10:	25-no-bitmap-fedora.conf
 Source11:	fc-cache.filter
 Source12:	fc-cache.script
 Patch1:		fontconfig-mdvconfig.patch
-Patch2:		0001-Fix-crash-with-FcConfigSetCurrent-NULL.patch
-Patch3:		0001-Fix-fc-cache-crash-caused-by-looking-up-NULL-object-.patch
-Patch4:		0001-Fix-a-SIGSEGV-on-FcPatternGet-with-NULL-pattern.patch
 
 BuildRequires:	ed
 BuildRequires:	libxml2-utils
@@ -73,6 +70,13 @@ Requires:	%{libname} = %{version}-%{release}
 %description -n	%{devname}
 The fontconfig-devel package includes the header files,
 and developer docs for the fontconfig package.
+
+%track
+prog %name = {
+	url = http://www.freedesktop.org/software/fontconfig/release/
+	version = %version
+	regex = %name-(__VER__)\.tar\.bz2
+}
 
 %prep
 %setup -q
