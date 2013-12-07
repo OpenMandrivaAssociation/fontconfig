@@ -13,7 +13,7 @@
 Summary:	Font configuration library
 Name:		fontconfig
 Version:	2.10.93
-Release:	3
+Release:	4
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
