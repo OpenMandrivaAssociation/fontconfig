@@ -31,6 +31,7 @@ Source10:	25-no-bitmap-fedora.conf
 # (fc) 2.1-4mdk change order of default fonts
 Source11:	fc-cache.filter
 Source12:	fc-cache.script
+Patch0:		fontconfig-2.10.93-no-warning.patch
 Patch1:		fontconfig-mdvconfig.patch
 
 BuildRequires:	ed

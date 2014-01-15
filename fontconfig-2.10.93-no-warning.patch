@@ -1,0 +1,12 @@
+diff -urN fontconfig-2.10.93.orig/src/fcxml.c fontconfig-2.10.93/src/fcxml.c
+--- fontconfig-2.10.93.orig/src/fcxml.c	2013-07-08 17:36:17.684860814 +0400
++++ fontconfig-2.10.93/src/fcxml.c	2013-07-08 17:37:26.691861850 +0400
+@@ -2165,7 +2165,7 @@
+ 	    filename != NULL &&
+ 	    !FcFileIsLink (filename))
+ 	{
+-            FcConfigMessage (parse, FcSevereWarning, "reading configurations from %s is deprecated.", s);
++//            FcConfigMessage (parse, FcSevereWarning, "reading configurations from %s is deprecated.", s);
+         }
+         if(filename)
+             FcStrFree(filename);

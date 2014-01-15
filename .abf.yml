@@ -1,3 +1,4 @@
+---
 sources:
   20-mdv-disable-antialias.conf: 27244e8f6e6838e66fa7cda581ea96a497b4f080
   25-no-bitmap-fedora.conf: aacd92abcc910f92734a45d3757a13dbe834b1b0
