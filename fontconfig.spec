@@ -81,6 +81,9 @@ prog %name = {
 %prep
 %setup -q
 %apply_patches
+# disable Werror for aarch64
+# you can remove it in future
+sed -i 's/-Werror//g' configure.ac
 # (tpg) rebuild just to nuke rpath
 libtoolize -f
 autoreconf -fi
