@@ -12,8 +12,8 @@
 
 Summary:	Font configuration library
 Name:		fontconfig
-Version:	2.10.93
-Release:	3
+Version:	2.11.1
+Release:	1
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
@@ -31,7 +31,6 @@ Source10:	25-no-bitmap-fedora.conf
 # (fc) 2.1-4mdk change order of default fonts
 Source11:	fc-cache.filter
 Source12:	fc-cache.script
-Patch0:		fontconfig-2.10.93-no-warning.patch
 Patch1:		fontconfig-mdvconfig.patch
 
 BuildRequires:	ed
@@ -82,6 +81,9 @@ prog %name = {
 %prep
 %setup -q
 %apply_patches
+# disable Werror for aarch64
+# you can remove it in future
+sed -i 's/-Werror//g' configure.ac
 # (tpg) rebuild just to nuke rpath
 libtoolize -f
 autoreconf -fi
