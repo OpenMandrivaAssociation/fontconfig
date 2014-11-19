@@ -13,7 +13,7 @@
 Summary:	Font configuration library
 Name:		fontconfig
 Version:	2.11.1
-Release:	3
+Release:	4
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
@@ -32,6 +32,7 @@ Source10:	25-no-bitmap-fedora.conf
 Source11:	fc-cache.filter
 Source12:	fc-cache.script
 Patch1:		fontconfig-mdvconfig.patch
+Patch2:		26-mdv-no-embeddedbitmap.conf.patch
 
 BuildRequires:	ed
 BuildRequires:	libxml2-utils

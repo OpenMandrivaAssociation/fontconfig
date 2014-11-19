@@ -1,0 +1,16 @@
+--- 26-mdv-no-embeddedbitmap.conf.bkp	2014-05-15 08:41:26.000000000 +0200
++++ 26-mdv-no-embeddedbitmap.conf	2014-10-15 21:53:01.000000000 +0200
+@@ -12,4 +12,13 @@
+                         <bool>false</bool>
+                 </edit>
+         </match>
++	<match target="font">
++		<test name="family" compare="contains">
++			<string>Calibri</string>
++			<string>Cambria</string>
++		</test>
++		<edit name="embeddedbitmap" mode="assign">
++			<bool>false</bool>
++		</edit>
++        </match>	
+ </fontconfig>
