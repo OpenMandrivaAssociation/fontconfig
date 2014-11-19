@@ -1,5 +1,5 @@
---- 26-mdv-no-embeddedbitmap.conf	2014-05-15 08:41:26.000000000 +0200
-+++ 26-mdv-no-embeddedbitmap.conf	2014-10-15 21:53:01.000000000 +0200
+--- ./conf.d/26-mdv-no-embeddedbitmap.conf	2014-05-15 08:41:26.000000000 +0200
++++ ./conf.d/26-mdv-no-embeddedbitmap.conf	2014-10-15 21:53:01.000000000 +0200
 @@ -12,4 +12,13 @@
                          <bool>false</bool>
                  </edit>
