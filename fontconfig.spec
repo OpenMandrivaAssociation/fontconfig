@@ -22,6 +22,8 @@ Source0:	http://www.freedesktop.org/software/fontconfig/release/%{name}-%{versio
 Source1:	30-mdv-urwfonts.conf
 # (fc) 2.3.2-3mdk disable antialiasing for some fonts
 Source3:	20-mdv-disable-antialias.conf
+# (tpg) use Antiqua Poltawski for polish language
+Source4:	65-lang-pl.conf
 # (fc) 2.3.2-3mdk  Avoid KDE/QT uses some bitmapped fonts (guisseppe)
 Source5:	30-mdv-avoid-bitmap.conf
 # (fc) 2.4.2-1mdv disable embedded bitmap for big size (Mdv bug #25924)
@@ -31,8 +33,7 @@ Source10:	25-no-bitmap-fedora.conf
 # (fc) 2.1-4mdk change order of default fonts
 Source11:	fc-cache.filter
 Source12:	fc-cache.script
-Patch1:		fontconfig-mdvconfig.patch
-
+Patch1:		fontconfig-omdv-config.patch
 BuildRequires:	ed
 BuildRequires:	libxml2-utils
 BuildRequires:	lynx
@@ -81,6 +82,7 @@ prog %name = {
 %prep
 %setup -q
 %apply_patches
+
 # disable Werror for aarch64
 # you can remove it in future
 sed -i 's/-Werror//g' configure.ac
@@ -106,7 +108,7 @@ export HASDOCBOOK=no
 %makeinstall_std
 
 mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
-cp %{SOURCE1} %{SOURCE3} %{SOURCE5} %{SOURCE8} %{SOURCE10} %{buildroot}%{_sysconfdir}/fonts/conf.d 
+cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} %{buildroot}%{_sysconfdir}/fonts/conf.d
 
 # needed in case main config files isn't up to date
 cat << EOF > %{buildroot}%{_sysconfdir}/fonts/conf.d/00-cache.conf
