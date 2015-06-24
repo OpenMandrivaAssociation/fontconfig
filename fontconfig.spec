@@ -12,8 +12,8 @@
 
 Summary:	Font configuration library
 Name:		fontconfig
-Version:	2.11.1
-Release:	6
+Version:	2.11.94
+Release:	1
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
@@ -93,7 +93,7 @@ autoreconf -fi
 export HASDOCBOOK=no
 %endif
 
-%configure2_5x \
+%configure \
 	--disable-static \
 	--localstatedir=/var \
 	--disable-libxml2 \
