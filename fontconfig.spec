@@ -12,8 +12,8 @@
 
 Summary:	Font configuration library
 Name:		fontconfig
-Version:	2.11.94
-Release:	4
+Version:	2.11.95
+Release:	1
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
@@ -123,7 +123,8 @@ cat << EOF > %{buildroot}%{_sysconfdir}/fonts/conf.d/00-cache.conf
 </fontconfig>
 EOF
 
-ln -s ../../../%{_datadir}/%{name}/conf.avail/25-unhint-nonlatin.conf %{buildroot}%{_sysconfdir}/fonts/conf.d
+ln -s ../../..%{_datadir}/%{name}/conf.avail/25-unhint-nonlatin.conf %{buildroot}%{_sysconfdir}/fonts/conf.d
+ln -s ../../..%{_datadir}/%{name}/conf.avail/10-sub-pixel-rgb.conf %{buildroot}%{_sysconfdir}/fonts/conf.d
 
 # remove unpackaged files
 rm -rf %{buildroot}%{_datadir}/doc/fontconfig 
@@ -164,4 +165,3 @@ rm -f %{_var}/cache/fontconfig/*.cache-2
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
 %{_mandir}/man3/*
-

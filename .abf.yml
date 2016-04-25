@@ -5,4 +5,4 @@ sources:
   30-mdv-avoid-bitmap.conf: 64967eef44479b192e439d43b0b238113d8f7b3f
   30-mdv-urwfonts.conf: 58fb76e5986149f2cb97383f775317288252a9c3
   65-lang-pl.conf: fdeb9affece48807278c3fb52024e7b7eb99ca23
-  fontconfig-2.11.94.tar.bz2: 5eb9b1fe8c3f9e0447b1238ade3c7af15b671a4d
+  fontconfig-2.11.95.tar.bz2: 2d22f865134d7a8d738122db92cd160a73e7128f
