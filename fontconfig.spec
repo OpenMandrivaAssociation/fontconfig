@@ -34,6 +34,7 @@ Source10:	25-no-bitmap-fedora.conf
 Source11:	fc-cache.filter
 Source12:	fc-cache.script
 Patch1:		fontconfig-omdv-config.patch
+Patch2:		fontconfig-2.11.95-wine-assert-nonfatal.patch
 BuildRequires:	ed
 BuildRequires:	libxml2-utils
 BuildRequires:	lynx
