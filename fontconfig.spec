@@ -12,7 +12,7 @@
 
 Summary:	Font configuration library
 Name:		fontconfig
-Version:	2.11.95
+Version:	2.12.0
 Release:	2
 License:	MIT
 Group:		System/X11
@@ -33,6 +33,7 @@ Source10:	25-no-bitmap-fedora.conf
 # (fc) 2.1-4mdk change order of default fonts
 Source11:	fc-cache.filter
 Source12:	fc-cache.script
+Patch0:		fontconfig-sleep-less.patch
 Patch1:		fontconfig-omdv-config.patch
 Patch2:		fontconfig-2.11.95-wine-assert-nonfatal.patch
 BuildRequires:	ed
@@ -56,18 +57,18 @@ Fontconfig is designed to locate fonts within the
 system and select them according to requirements specified by 
 applications.
 
-%package -n	%{libname}
+%package -n %{libname}
 Summary:	Font configuration and customization library
 Group:		System/Libraries
 
 %description -n	%{libname}
 This package contains the shared library for %{name}.
 
-%package -n	%{devname}
+%package -n %{devname}
 Summary:	Font configuration and customization library
 Group:		Development/C
-Provides:	%{name}-devel = %{version}-%{release}
-Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{EVRD}
+Requires:	%{libname} = %{EVRD}
 
 %description -n	%{devname}
 The fontconfig-devel package includes the header files,
