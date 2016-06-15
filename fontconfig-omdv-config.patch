@@ -1,7 +1,18 @@
-diff -Naur fontconfig-2.11.94/conf.d/45-latin.conf fontconfig-2.11.94.tpg/conf.d/45-latin.conf
---- fontconfig-2.11.94/conf.d/45-latin.conf	2014-11-06 04:13:44.000000000 +0000
-+++ fontconfig-2.11.94.tpg/conf.d/45-latin.conf	2015-06-24 18:50:42.230703757 +0000
-@@ -22,6 +22,10 @@
+diff -Naur fontconfig-2.12.0/conf.d/45-latin.conf fontconfig-2.12.0.tpg/conf.d/45-latin.conf
+--- fontconfig-2.12.0/conf.d/45-latin.conf	2016-05-25 04:05:54.000000000 +0000
++++ fontconfig-2.12.0.tpg/conf.d/45-latin.conf	2016-06-15 20:44:00.025554676 +0000
+@@ -58,6 +58,10 @@
+ 		<default><family>serif</family></default>
+ 	</alias>
+ 	<alias>
++		<family>Noto Serif</family>
++		<default><family>serif</family></default>
++	</alias>
++	<alias>
+ 		<family>Palatino Linotype</family>
+ 		<default><family>serif</family></default>
+ 	</alias>
+@@ -70,6 +74,10 @@
  		<default><family>serif</family></default>
  	</alias>
  	<alias>
@@ -12,24 +23,52 @@ diff -Naur fontconfig-2.11.94/conf.d/45-latin.conf fontconfig-2.11.94.tpg/conf.d
  		<family>Times New Roman</family>
  		<default><family>serif</family></default>
  	</alias>
-diff -Naur fontconfig-2.11.94/conf.d/60-latin.conf fontconfig-2.11.94.tpg/conf.d/60-latin.conf
---- fontconfig-2.11.94/conf.d/60-latin.conf	2014-11-06 04:13:44.000000000 +0000
-+++ fontconfig-2.11.94.tpg/conf.d/60-latin.conf	2015-06-24 18:08:16.239729243 +0000
-@@ -4,8 +4,8 @@
+@@ -149,6 +157,10 @@
+ 		<default><family>sans-serif</family></default>
+ 	</alias>
+ 	<alias>
++		<family>Noto Sans</family>
++		<default><family>sans-serif</family></default>
++	</alias>
++	<alias>
+ 		<family>Luxi Sans</family>
+ 		<default><family>sans-serif</family></default>
+ 	</alias>
+@@ -228,6 +240,14 @@
+ 		<default><family>monospace</family></default>
+ 	</alias>
+ 	<alias>
++		<family>Noto Mono</family>
++		<default><family>monospace</family></default>
++	</alias>
++	<alias>
++		<family>Noto Sans Mono CJK SC</family>
++		<default><family>monospace</family></default>
++	</alias>
++	<alias>
+ 		<family>Terminal</family>
+ 		<default><family>monospace</family></default>
+ 	</alias>
+diff -Naur fontconfig-2.12.0/conf.d/60-latin.conf fontconfig-2.12.0.tpg/conf.d/60-latin.conf
+--- fontconfig-2.12.0/conf.d/60-latin.conf	2016-04-06 03:22:55.000000000 +0000
++++ fontconfig-2.12.0.tpg/conf.d/60-latin.conf	2016-06-15 20:45:06.871352742 +0000
+@@ -4,8 +4,9 @@
  	<alias>
  		<family>serif</family>
  		<prefer>
 -			<family>Bitstream Vera Serif</family>
++			<family>Noto Serif</family>
  			<family>DejaVu Serif</family>
 +			<family>Bitstream Vera Serif</family>
  			<family>Times New Roman</family>
  			<family>Thorndale AMT</family>
  			<family>Luxi Serif</family>
-@@ -17,15 +17,15 @@
+@@ -17,15 +18,16 @@
  	<alias>
  		<family>sans-serif</family>
  		<prefer>
 -			<family>Bitstream Vera Sans</family>
++			<family>Noto Sans</family>
  			<family>DejaVu Sans</family>
 -			<family>Verdana</family>
 -			<family>Arial</family>
@@ -46,11 +85,13 @@ diff -Naur fontconfig-2.11.94/conf.d/60-latin.conf fontconfig-2.11.94.tpg/conf.d
  			<family>Lucida Sans Unicode</family>
  			<family>BPG Glaho International</family> <!-- lat,cyr,arab,geor -->
  			<family>Tahoma</family> <!-- lat,cyr,greek,heb,arab,thai -->
-@@ -34,14 +34,14 @@
+@@ -34,14 +36,16 @@
  	<alias>
  		<family>monospace</family>
  		<prefer>
 -			<family>Bitstream Vera Sans Mono</family>
++			<family>Noto Mono</family>
++			<family>Noto Sans Mono CJK SC</family>
  			<family>DejaVu Sans Mono</family>
 +			<family>Bitstream Vera Sans Mono</family>
  			<family>Inconsolata</family>
@@ -64,10 +105,15 @@ diff -Naur fontconfig-2.11.94/conf.d/60-latin.conf fontconfig-2.11.94.tpg/conf.d
  			<family>Nimbus Mono</family>
  			<family>Courier</family>
  		</prefer>
-diff -Naur fontconfig-2.11.94/conf.d/65-nonlatin.conf fontconfig-2.11.94.tpg/conf.d/65-nonlatin.conf
---- fontconfig-2.11.94/conf.d/65-nonlatin.conf	2014-01-20 08:14:19.000000000 +0000
-+++ fontconfig-2.11.94.tpg/conf.d/65-nonlatin.conf	2015-06-24 18:13:40.334626015 +0000
-@@ -26,10 +26,14 @@
+diff -Naur fontconfig-2.12.0/conf.d/65-nonlatin.conf fontconfig-2.12.0.tpg/conf.d/65-nonlatin.conf
+--- fontconfig-2.12.0/conf.d/65-nonlatin.conf	2016-01-15 05:23:42.000000000 +0000
++++ fontconfig-2.12.0.tpg/conf.d/65-nonlatin.conf	2016-06-15 20:54:17.025095438 +0000
+@@ -23,13 +23,19 @@
+ 			<family>Sampige</family> <!-- kannada -->
+ 			<family>padmaa</family> <!-- gujarati -->
+ 			<family>Hapax Berbère</family> <!-- tifinagh -->
++			<family>Noto Sans CJK SC</family>
++			<family>Noto Sans CJK TC</family>
  			<family>MS Mincho</family> <!-- han (ja) -->
  			<family>SimSun</family> <!-- han (zh-cn,zh-tw) -->
  			<family>PMingLiu</family> <!-- han (zh-tw) -->
@@ -82,7 +128,14 @@ diff -Naur fontconfig-2.11.94/conf.d/65-nonlatin.conf fontconfig-2.11.94.tpg/con
  			<family>ZYSong18030</family> <!-- han (zh-cn,zh-tw) -->
  			<family>HanyiSong</family> <!-- han (zh-cn,zh-tw) -->
  			<family>MgOpen Canonica</family>
-@@ -99,10 +103,14 @@
+@@ -94,15 +100,21 @@
+ 			<family>Sampige</family> <!-- kannada -->
+ 			<family>padmaa</family> <!-- gujarati -->
+ 			<family>Hapax Berbère</family> <!-- tifinagh -->
++			<family>Noto Sans CJK SC</family>
++			<family>Noto Sans CJK TC</family>
+ 			<family>MS Gothic</family> <!-- han (ja) -->
+ 			<family>UmePlus P Gothic</family> <!-- han (ja) -->
  			<!-- chinese fonts are actually serifed -->
  			<family>SimSun</family> <!-- han (zh-cn,zh-tw) -->
  			<family>PMingLiu</family> <!-- han (zh-tw) -->
@@ -97,7 +150,13 @@ diff -Naur fontconfig-2.11.94/conf.d/65-nonlatin.conf fontconfig-2.11.94.tpg/con
  			<family>MgOpen Modata</family>
  			<family>VL Gothic</family>
  			<family>IPAMonaGothic</family>
-@@ -155,8 +163,12 @@
+@@ -151,12 +163,18 @@
+ 			<family>Sazanami Gothic</family>
+ 			<family>Kochi Gothic</family>
+ 			<family>AR PL KaitiM GB</family>
++			<family>Noto Sans Mono CJK SC</family>
++			<family>Noto Sans Mono CJK TC</family>
+ 			<family>MS Gothic</family> <!-- han (ja) -->
  			<family>UmePlus Gothic</family> <!-- han (ja) -->
  			<family>NSimSun</family> <!-- han (zh-cn,zh-tw) -->
  			<family>MingLiu</family> <!-- han (zh-tw) -->
