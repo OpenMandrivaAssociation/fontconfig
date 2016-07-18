@@ -13,7 +13,7 @@
 Summary:	Font configuration library
 Name:		fontconfig
 Version:	2.12.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
@@ -111,19 +111,6 @@ export HASDOCBOOK=no
 
 mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
 cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} %{buildroot}%{_sysconfdir}/fonts/conf.d
-
-# needed in case main config files isn't up to date
-cat << EOF > %{buildroot}%{_sysconfdir}/fonts/conf.d/00-cache.conf
-<?xml version="1.0"?>
-<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-<fontconfig>
-<!-- Font cache directory list -->
-
-        <cachedir>/var/cache/fontconfig</cachedir>
-        <cachedir>~/.fontconfig</cachedir>
-
-</fontconfig>
-EOF
 
 ln -s ../../..%{_datadir}/%{name}/conf.avail/25-unhint-nonlatin.conf %{buildroot}%{_sysconfdir}/fonts/conf.d
 ln -s ../../..%{_datadir}/%{name}/conf.avail/10-sub-pixel-rgb.conf %{buildroot}%{_sysconfdir}/fonts/conf.d
