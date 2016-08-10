@@ -12,8 +12,8 @@
 
 Summary:	Font configuration library
 Name:		fontconfig
-Version:	2.12.0
-Release:	3
+Version:	2.12.1
+Release:	1
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
