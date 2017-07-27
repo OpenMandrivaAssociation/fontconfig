@@ -41,6 +41,7 @@ Patch3:		0001-fix-test-with-freetype2-2.7.1.patch
 BuildRequires:	ed
 BuildRequires:	pkgconfig(expat)
 BuildRequires:	lynx
+BuildRequires:	gperf
 BuildRequires:	bzip2-devel
 BuildRequires:	pkgconfig(freetype2) >= 2.3.5
 %if %rebuild_doc
