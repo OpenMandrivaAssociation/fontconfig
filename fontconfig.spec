@@ -36,6 +36,8 @@ Source12:	fc-cache.script
 Patch0:		fontconfig-sleep-less.patch
 Patch1:		fontconfig-omdv-config.patch
 Patch2:		fontconfig-2.11.95-wine-assert-nonfatal.patch
+# (archlinux) 2.12.1 freetype2 >= 2.7.1
+Patch3:		0001-fix-test-with-freetype2-2.7.1.patch
 BuildRequires:	ed
 BuildRequires:	pkgconfig(expat)
 BuildRequires:	lynx

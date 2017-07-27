@@ -1,6 +1,6 @@
-diff -Naur fontconfig-2.12.0/conf.d/45-latin.conf fontconfig-2.12.0.tpg/conf.d/45-latin.conf
---- fontconfig-2.12.0/conf.d/45-latin.conf	2016-05-25 04:05:54.000000000 +0000
-+++ fontconfig-2.12.0.tpg/conf.d/45-latin.conf	2016-06-15 20:44:00.025554676 +0000
+diff -Naur fontconfig-2.12.4/conf.d/45-latin.conf fontconfig-2.12.4.tpg/conf.d/45-latin.conf
+--- fontconfig-2.12.4/conf.d/45-latin.conf	2016-12-02 03:22:19.020598016 +0000
++++ fontconfig-2.12.4.tpg/conf.d/45-latin.conf	2017-07-27 21:51:10.255489598 +0000
 @@ -58,6 +58,10 @@
  		<default><family>serif</family></default>
  	</alias>
@@ -34,7 +34,7 @@ diff -Naur fontconfig-2.12.0/conf.d/45-latin.conf fontconfig-2.12.0.tpg/conf.d/4
  		<family>Luxi Sans</family>
  		<default><family>sans-serif</family></default>
  	</alias>
-@@ -228,6 +240,14 @@
+@@ -232,6 +244,14 @@
  		<default><family>monospace</family></default>
  	</alias>
  	<alias>
@@ -49,9 +49,9 @@ diff -Naur fontconfig-2.12.0/conf.d/45-latin.conf fontconfig-2.12.0.tpg/conf.d/4
  		<family>Terminal</family>
  		<default><family>monospace</family></default>
  	</alias>
-diff -Naur fontconfig-2.12.0/conf.d/60-latin.conf fontconfig-2.12.0.tpg/conf.d/60-latin.conf
---- fontconfig-2.12.0/conf.d/60-latin.conf	2016-04-06 03:22:55.000000000 +0000
-+++ fontconfig-2.12.0.tpg/conf.d/60-latin.conf	2016-06-15 20:45:06.871352742 +0000
+diff -Naur fontconfig-2.12.4/conf.d/60-latin.conf fontconfig-2.12.4.tpg/conf.d/60-latin.conf
+--- fontconfig-2.12.4/conf.d/60-latin.conf	2016-12-02 03:22:19.020598016 +0000
++++ fontconfig-2.12.4.tpg/conf.d/60-latin.conf	2017-07-27 21:53:21.069117770 +0000
 @@ -4,8 +4,9 @@
  	<alias>
  		<family>serif</family>
@@ -76,16 +76,15 @@ diff -Naur fontconfig-2.12.0/conf.d/60-latin.conf fontconfig-2.12.0.tpg/conf.d/6
 +			<family>Bitstream Vera Sans</family>
  			<family>Luxi Sans</family>
  			<family>Nimbus Sans L</family>
--			<family>Nimbus Sans</family>
+ 			<family>Nimbus Sans</family>
 +			<family>Arial</family>
 +			<family>Albany AMT</family>
  			<family>Helvetica</family>
 +			<family>Verdana</family>
-+			<family>Nimbus Sans</family>
  			<family>Lucida Sans Unicode</family>
  			<family>BPG Glaho International</family> <!-- lat,cyr,arab,geor -->
  			<family>Tahoma</family> <!-- lat,cyr,greek,heb,arab,thai -->
-@@ -34,14 +36,16 @@
+@@ -34,16 +36,18 @@
  	<alias>
  		<family>monospace</family>
  		<prefer>
@@ -95,20 +94,23 @@ diff -Naur fontconfig-2.12.0/conf.d/60-latin.conf fontconfig-2.12.0.tpg/conf.d/6
  			<family>DejaVu Sans Mono</family>
 +			<family>Bitstream Vera Sans Mono</family>
  			<family>Inconsolata</family>
-+			<family>Luxi Mono</family>
-+			<family>Nimbus Mono L</family>
- 			<family>Andale Mono</family>
- 			<family>Courier New</family>
- 			<family>Cumberland AMT</family>
--			<family>Luxi Mono</family>
--			<family>Nimbus Mono L</family>
+-			<family>Andale Mono</family>
+-			<family>Courier New</family>
+-			<family>Cumberland AMT</family>
+ 			<family>Luxi Mono</family>
+ 			<family>Nimbus Mono L</family>
  			<family>Nimbus Mono</family>
+ 			<family>Nimbus Mono PS</family>
++			<family>Andale Mono</family>
++			<family>Courier New</family>
++			<family>Cumberland AMT</family>
  			<family>Courier</family>
  		</prefer>
-diff -Naur fontconfig-2.12.0/conf.d/65-nonlatin.conf fontconfig-2.12.0.tpg/conf.d/65-nonlatin.conf
---- fontconfig-2.12.0/conf.d/65-nonlatin.conf	2016-01-15 05:23:42.000000000 +0000
-+++ fontconfig-2.12.0.tpg/conf.d/65-nonlatin.conf	2016-06-15 20:54:17.025095438 +0000
-@@ -23,13 +23,19 @@
+ 	</alias>
+diff -Naur fontconfig-2.12.4/conf.d/65-nonlatin.conf fontconfig-2.12.4.tpg/conf.d/65-nonlatin.conf
+--- fontconfig-2.12.4/conf.d/65-nonlatin.conf	2016-07-11 02:41:05.020598016 +0000
++++ fontconfig-2.12.4.tpg/conf.d/65-nonlatin.conf	2017-07-27 21:55:49.528067277 +0000
+@@ -23,13 +23,20 @@
  			<family>Sampige</family> <!-- kannada -->
  			<family>padmaa</family> <!-- gujarati -->
  			<family>Hapax Berbère</family> <!-- tifinagh -->
@@ -117,6 +119,7 @@ diff -Naur fontconfig-2.12.0/conf.d/65-nonlatin.conf fontconfig-2.12.0.tpg/conf.
  			<family>MS Mincho</family> <!-- han (ja) -->
  			<family>SimSun</family> <!-- han (zh-cn,zh-tw) -->
  			<family>PMingLiu</family> <!-- han (zh-tw) -->
++			<family>Source Han Sans</family> <!-- han (ja, ko, zh) -->
 +			<family>Open Hei</family> <!--han (zh-tw) -->
 +			<family>WenQuanYi Micro Hei</family> <!-- han (zh-cn,zh-tw) -->
  			<family>WenQuanYi Zen Hei</family> <!-- han (zh-cn,zh-tw) -->
@@ -128,7 +131,7 @@ diff -Naur fontconfig-2.12.0/conf.d/65-nonlatin.conf fontconfig-2.12.0.tpg/conf.
  			<family>ZYSong18030</family> <!-- han (zh-cn,zh-tw) -->
  			<family>HanyiSong</family> <!-- han (zh-cn,zh-tw) -->
  			<family>MgOpen Canonica</family>
-@@ -94,15 +100,21 @@
+@@ -94,15 +101,21 @@
  			<family>Sampige</family> <!-- kannada -->
  			<family>padmaa</family> <!-- gujarati -->
  			<family>Hapax Berbère</family> <!-- tifinagh -->
@@ -136,9 +139,12 @@ diff -Naur fontconfig-2.12.0/conf.d/65-nonlatin.conf fontconfig-2.12.0.tpg/conf.
 +			<family>Noto Sans CJK TC</family>
  			<family>MS Gothic</family> <!-- han (ja) -->
  			<family>UmePlus P Gothic</family> <!-- han (ja) -->
- 			<!-- chinese fonts are actually serifed -->
- 			<family>SimSun</family> <!-- han (zh-cn,zh-tw) -->
- 			<family>PMingLiu</family> <!-- han (zh-tw) -->
+-			<!-- chinese fonts are actually serifed -->
+-			<family>SimSun</family> <!-- han (zh-cn,zh-tw) -->
+-			<family>PMingLiu</family> <!-- han (zh-tw) -->
++			<family>Microsoft YaHei UI</family> <!-- han (zh-cn,zh-tw) -->
++			<family>Microsoft JhengHei UI</family> <!-- han (zh-tw) -->
++			<family>Source Han Sans</family> <!-- han (ja, ko, zh) -->
 +			<family>Open Hei</family> <!--han (zh-tw) -->
 +			<family>WenQuanYi Micro Hei</family> <!-- han (zh-cn,zh-tw) -->
  			<family>WenQuanYi Zen Hei</family> <!-- han (zh-cn,zh-tw) -->
@@ -150,7 +156,7 @@ diff -Naur fontconfig-2.12.0/conf.d/65-nonlatin.conf fontconfig-2.12.0.tpg/conf.
  			<family>MgOpen Modata</family>
  			<family>VL Gothic</family>
  			<family>IPAMonaGothic</family>
-@@ -151,12 +163,18 @@
+@@ -151,12 +164,18 @@
  			<family>Sazanami Gothic</family>
  			<family>Kochi Gothic</family>
  			<family>AR PL KaitiM GB</family>
