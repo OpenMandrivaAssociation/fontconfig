@@ -12,7 +12,7 @@
 
 Summary:	Font configuration library
 Name:		fontconfig
-Version:	2.12.1
+Version:	2.12.4
 Release:	1
 License:	MIT
 Group:		System/X11
@@ -36,12 +36,14 @@ Source12:	fc-cache.script
 Patch0:		fontconfig-sleep-less.patch
 Patch1:		fontconfig-omdv-config.patch
 Patch2:		fontconfig-2.11.95-wine-assert-nonfatal.patch
+# (archlinux) 2.12.1 freetype2 >= 2.7.1
+Patch3:		0001-fix-test-with-freetype2-2.7.1.patch
 BuildRequires:	ed
-BuildRequires:	libxml2-utils
+BuildRequires:	pkgconfig(expat)
 BuildRequires:	lynx
+BuildRequires:	gperf
 BuildRequires:	bzip2-devel
 BuildRequires:	pkgconfig(freetype2) >= 2.3.5
-BuildRequires:	pkgconfig(libxml-2.0)
 %if %rebuild_doc
 # Actually, we don't really need whole set of texlive packages
 # but it's hard to find what exactly we need. So we use texlive.
@@ -101,8 +103,7 @@ export HASDOCBOOK=no
 	--disable-static \
 	--localstatedir=/var \
 	--disable-libxml2 \
-	--with-add-fonts="/usr/lib/X11/fonts,/usr/X11R6/lib/X11/fonts,/opt/ttfonts" \
-	--enable-libxml2
+	--with-add-fonts="/usr/lib/X11/fonts,/usr/X11R6/lib/X11/fonts,/opt/ttfonts"
 
 %make LIBS="-lbz2"
 
