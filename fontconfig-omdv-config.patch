@@ -1,6 +1,5 @@
-diff -Naur fontconfig-2.12.4/conf.d/45-latin.conf fontconfig-2.12.4.tpg/conf.d/45-latin.conf
---- fontconfig-2.12.4/conf.d/45-latin.conf	2016-12-02 03:22:19.020598016 +0000
-+++ fontconfig-2.12.4.tpg/conf.d/45-latin.conf	2017-07-27 21:51:10.255489598 +0000
+--- fontconfig-2.12.6/conf.d/45-latin.conf.0001~	2016-12-02 04:22:19.000000000 +0100
++++ fontconfig-2.12.6/conf.d/45-latin.conf	2017-10-18 17:40:56.294244729 +0200
 @@ -58,6 +58,10 @@
  		<default><family>serif</family></default>
  	</alias>
@@ -49,9 +48,8 @@ diff -Naur fontconfig-2.12.4/conf.d/45-latin.conf fontconfig-2.12.4.tpg/conf.d/4
  		<family>Terminal</family>
  		<default><family>monospace</family></default>
  	</alias>
-diff -Naur fontconfig-2.12.4/conf.d/60-latin.conf fontconfig-2.12.4.tpg/conf.d/60-latin.conf
---- fontconfig-2.12.4/conf.d/60-latin.conf	2016-12-02 03:22:19.020598016 +0000
-+++ fontconfig-2.12.4.tpg/conf.d/60-latin.conf	2017-07-27 21:53:21.069117770 +0000
+--- fontconfig-2.12.6/conf.d/60-latin.conf.0001~	2016-12-02 04:22:19.000000000 +0100
++++ fontconfig-2.12.6/conf.d/60-latin.conf	2017-10-18 17:40:56.295244727 +0200
 @@ -4,8 +4,9 @@
  	<alias>
  		<family>serif</family>
@@ -107,16 +105,20 @@ diff -Naur fontconfig-2.12.4/conf.d/60-latin.conf fontconfig-2.12.4.tpg/conf.d/6
  			<family>Courier</family>
  		</prefer>
  	</alias>
-diff -Naur fontconfig-2.12.4/conf.d/65-nonlatin.conf fontconfig-2.12.4.tpg/conf.d/65-nonlatin.conf
---- fontconfig-2.12.4/conf.d/65-nonlatin.conf	2016-07-11 02:41:05.020598016 +0000
-+++ fontconfig-2.12.4.tpg/conf.d/65-nonlatin.conf	2017-07-27 21:55:49.528067277 +0000
-@@ -23,13 +23,20 @@
+--- fontconfig-2.12.6/conf.d/65-nonlatin.conf.0001~	2017-09-21 06:44:27.000000000 +0200
++++ fontconfig-2.12.6/conf.d/65-nonlatin.conf	2017-10-18 17:42:21.831088808 +0200
+@@ -23,13 +23,25 @@
  			<family>Sampige</family> <!-- kannada -->
  			<family>padmaa</family> <!-- gujarati -->
  			<family>Hapax Berbère</family> <!-- tifinagh -->
 +			<family>Noto Sans CJK SC</family>
 +			<family>Noto Sans CJK TC</family>
  			<family>MS Mincho</family> <!-- han (ja) -->
++			<family>Microsoft YaHei UI</family> <!-- han (zh-cn,zh-tw) -->
++			<family>Microsoft JhengHei UI</family> <!-- han (zh-tw) -->
++			<family>Source Han Sans</family> <!-- han (ja, ko, zh) -->
++			<family>Open Hei</family> <!--han (zh-tw) -->
++			<family>WenQuanYi Micro Hei</family> <!-- han (zh-cn,zh-tw) -->
  			<family>SimSun</family> <!-- han (zh-cn,zh-tw) -->
  			<family>PMingLiu</family> <!-- han (zh-tw) -->
 +			<family>Source Han Sans</family> <!-- han (ja, ko, zh) -->
@@ -131,32 +133,7 @@ diff -Naur fontconfig-2.12.4/conf.d/65-nonlatin.conf fontconfig-2.12.4.tpg/conf.
  			<family>ZYSong18030</family> <!-- han (zh-cn,zh-tw) -->
  			<family>HanyiSong</family> <!-- han (zh-cn,zh-tw) -->
  			<family>MgOpen Canonica</family>
-@@ -94,15 +101,21 @@
- 			<family>Sampige</family> <!-- kannada -->
- 			<family>padmaa</family> <!-- gujarati -->
- 			<family>Hapax Berbère</family> <!-- tifinagh -->
-+			<family>Noto Sans CJK SC</family>
-+			<family>Noto Sans CJK TC</family>
- 			<family>MS Gothic</family> <!-- han (ja) -->
- 			<family>UmePlus P Gothic</family> <!-- han (ja) -->
--			<!-- chinese fonts are actually serifed -->
--			<family>SimSun</family> <!-- han (zh-cn,zh-tw) -->
--			<family>PMingLiu</family> <!-- han (zh-tw) -->
-+			<family>Microsoft YaHei UI</family> <!-- han (zh-cn,zh-tw) -->
-+			<family>Microsoft JhengHei UI</family> <!-- han (zh-tw) -->
-+			<family>Source Han Sans</family> <!-- han (ja, ko, zh) -->
-+			<family>Open Hei</family> <!--han (zh-tw) -->
-+			<family>WenQuanYi Micro Hei</family> <!-- han (zh-cn,zh-tw) -->
- 			<family>WenQuanYi Zen Hei</family> <!-- han (zh-cn,zh-tw) -->
- 			<family>WenQuanYi Bitmap Song</family> <!-- han (zh-cn,zh-tw) -->
- 			<family>AR PL ShanHeiSun Uni</family> <!--han (ja,zh-cn,zh-tw) -->
- 			<family>AR PL New Sung</family> <!-- han (zh-cn,zh-tw) -->
-+			<family>AR PL UMing TW MBE</family> <!--han (zh-tw) -->
-+			<family>AR PL UMing CN</family> <!--han (ja,zh-cn) -->
- 			<family>MgOpen Modata</family>
- 			<family>VL Gothic</family>
- 			<family>IPAMonaGothic</family>
-@@ -151,12 +164,18 @@
+@@ -150,12 +162,18 @@
  			<family>Sazanami Gothic</family>
  			<family>Kochi Gothic</family>
  			<family>AR PL KaitiM GB</family>
