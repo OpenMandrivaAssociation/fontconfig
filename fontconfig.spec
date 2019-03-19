@@ -13,7 +13,7 @@
 Summary:	Font configuration library
 Name:		fontconfig
 Version:	2.13.1
-Release:	2
+Release:	3
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
@@ -44,6 +44,7 @@ BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(freetype2) >= 2.3.5
 BuildRequires:	pkgconfig(uuid)
 BuildRequires:	gettext-devel
+BuildRequires:	pkgconfig(json-c)
 %if %rebuild_doc
 # Actually, we don't really need whole set of texlive packages
 # but it's hard to find what exactly we need. So we use texlive.
