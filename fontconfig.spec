@@ -1,11 +1,11 @@
-%define major	1
+%define major 1
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 
 %define bootstrap 1
 %{?_without_bootstrap: %global bootstrap 0}
 %{?_with_bootstrap: %global bootstrap 1}
-%define rebuild_doc	0
+%define rebuild_doc 0
 %if %{bootstrap}
 %define rebuild_doc 0
 %endif
@@ -13,7 +13,7 @@
 Summary:	Font configuration library
 Name:		fontconfig
 Version:	2.13.1
-Release:	1
+Release:	2
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
@@ -31,11 +31,12 @@ Source8:	26-mdv-no-embeddedbitmap.conf
 # (fc) 2.4.92-1mdv enable embeddedbitmap on some CJK fonts (Fedora)
 Source10:	25-no-bitmap-fedora.conf
 
-Patch0:		fontconfig-sleep-less.patch
-Patch1:		fontconfig-omdv-config.patch
-Patch2:		fontconfig-2.11.95-wine-assert-nonfatal.patch
+Patch0:		https://src.fedoraproject.org/cgit/rpms/fontconfig.git/plain/fontconfig-sleep-less.patch
+Patch1:		https://src.fedoraproject.org/cgit/rpms/fontconfig.git/plain/fontconfig-stop-cleanup-uuid.patch
+Patch2:		fontconfig-omdv-config.patch
+Patch3:		fontconfig-2.11.95-wine-assert-nonfatal.patch
 # (archlinux) 2.12.1 freetype2 >= 2.7.1
-Patch3:		0001-fix-test-with-freetype2-2.7.1.patch
+Patch4:		0001-fix-test-with-freetype2-2.7.1.patch
 
 BuildRequires:	ed
 BuildRequires:	pkgconfig(expat)
