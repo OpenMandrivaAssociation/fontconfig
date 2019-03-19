@@ -43,6 +43,7 @@ BuildRequires:	gperf
 BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(freetype2) >= 2.3.5
 BuildRequires:	pkgconfig(uuid)
+BuildRequires:	gettext-devel
 %if %rebuild_doc
 # Actually, we don't really need whole set of texlive packages
 # but it's hard to find what exactly we need. So we use texlive.
