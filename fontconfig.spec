@@ -35,8 +35,6 @@ Patch0:		https://src.fedoraproject.org/cgit/rpms/fontconfig.git/plain/fontconfig
 Patch1:		https://src.fedoraproject.org/cgit/rpms/fontconfig.git/plain/fontconfig-stop-cleanup-uuid.patch
 Patch2:		fontconfig-omdv-config.patch
 Patch3:		fontconfig-2.11.95-wine-assert-nonfatal.patch
-# (archlinux) 2.12.1 freetype2 >= 2.7.1
-Patch4:		0001-fix-test-with-freetype2-2.7.1.patch
 
 BuildRequires:	ed
 BuildRequires:	pkgconfig(expat)
