@@ -1,19 +1,14 @@
 %define major 1
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
+%define rebuild_doc 0
 
-%define bootstrap 1
-%{?_without_bootstrap: %global bootstrap 0}
-%{?_with_bootstrap: %global bootstrap 1}
-%define rebuild_doc 0
-%if %{bootstrap}
-%define rebuild_doc 0
-%endif
+%global optflags %{optflags} -O3
 
 Summary:	Font configuration library
 Name:		fontconfig
 Version:	2.13.1
-Release:	3
+Release:	4
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
