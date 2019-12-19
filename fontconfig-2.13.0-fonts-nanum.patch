@@ -1,0 +1,14 @@
+diff -ur fontconfig-2.13.0/conf.d/40-nonlatin.conf fontconfig-2.13.0_patched/conf.d/40-nonlatin.conf
+--- fontconfig-2.13.0/conf.d/40-nonlatin.conf	2017-11-20 15:02:20.000000000 +0300
++++ fontconfig-2.13.0_patched/conf.d/40-nonlatin.conf	2018-09-11 16:31:17.271903534 +0300
+@@ -95,6 +95,10 @@
+ 		<default><family>serif</family></default>
+ 	</alias>
+ 	<alias>
++		<family>Baekmuk Gulim</family>
++		<default><family>sans-serif</family></default>
++	</alias>
++	<alias>
+ 		<family>SimSun</family>
+ 		<default><family>serif</family></default>
+ 	</alias>

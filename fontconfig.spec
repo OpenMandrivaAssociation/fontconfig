@@ -8,7 +8,7 @@
 Summary:	Font configuration library
 Name:		fontconfig
 Version:	2.13.1
-Release:	4
+Release:	5
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
@@ -30,6 +30,13 @@ Patch0:		https://src.fedoraproject.org/cgit/rpms/fontconfig.git/plain/fontconfig
 Patch1:		https://src.fedoraproject.org/cgit/rpms/fontconfig.git/plain/fontconfig-stop-cleanup-uuid.patch
 Patch2:		fontconfig-omdv-config.patch
 Patch3:		fontconfig-2.11.95-wine-assert-nonfatal.patch
+
+
+Patch12:         fontconfig-2.13.0-fonts-nanum.patch
+Patch13:         fontconfig-2.13.0-lcdfilterlegacy.patch
+Patch15:         fontconfig-2.13.0-old-diff-gz-06-ubuntu-lcddefault.patch
+Patch17:         fontconfig-2.13.0-ubuntu-add-hinting-and-antialiasing-confs.patch
+Patch18:         fontconfig-2.13.0-ubuntu-add-monospace-lcd-filter-conf.patch
 
 BuildRequires:	ed
 BuildRequires:	pkgconfig(expat)

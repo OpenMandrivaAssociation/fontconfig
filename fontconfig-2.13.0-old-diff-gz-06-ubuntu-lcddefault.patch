@@ -1,0 +1,67 @@
+diff -ur fontconfig-2.13.0/conf.d/Makefile.am fontconfig-2.13.0_patched/conf.d/Makefile.am
+--- fontconfig-2.13.0/conf.d/Makefile.am	2017-10-12 12:03:39.000000000 +0300
++++ fontconfig-2.13.0_patched/conf.d/Makefile.am	2018-09-11 16:58:01.001861533 +0300
+@@ -26,8 +26,11 @@
+ DOC_FILES = $(DOC_SOURCES:.in=)
+ 
+ CONF_LINKS = \
++	10-antialias.conf \
++	10-hinting.conf \
+ 	10-hinting-$(PREFERRED_HINTING).conf	\
+ 	10-scale-bitmap-fonts.conf \
++	11-lcdfilter-default.conf \
+ 	20-unhint-small-vera.conf \
+ 	30-metric-aliases.conf \
+ 	40-nonlatin.conf \
+@@ -52,7 +55,9 @@
+ 
+ templatedir = $(TEMPLATEDIR)
+ template_DATA =				\
++	10-antialias.conf		\
+ 	10-autohint.conf		\
++	10-hinting.conf			\
+ 	10-hinting-full.conf		\
+ 	10-hinting-medium.conf		\
+ 	10-hinting-none.conf		\
+@@ -75,6 +80,7 @@
+ 	45-latin.conf			\
+ 	49-sansserif.conf		\
+ 	50-user.conf			\
++	53-monospace-lcd-filter.conf	\
+ 	51-local.conf			\
+ 	60-generic.conf			\
+ 	60-latin.conf			\
+diff -ur fontconfig-2.13.0/conf.d/Makefile.in fontconfig-2.13.0_patched/conf.d/Makefile.in
+--- fontconfig-2.13.0/conf.d/Makefile.in	2018-03-06 06:31:57.000000000 +0300
++++ fontconfig-2.13.0_patched/conf.d/Makefile.in	2018-09-11 16:59:47.311858753 +0300
+@@ -368,8 +368,11 @@
+ DOC_SOURCES = README.in
+ DOC_FILES = $(DOC_SOURCES:.in=)
+ CONF_LINKS = \
+-	10-hinting-$(PREFERRED_HINTING).conf	\
++	10-antialias.conf \
++	10-hinting.conf \
++	10-hinting-$(PREFERRED_HINTING).conf \
+ 	10-scale-bitmap-fonts.conf \
++	11-lcdfilter-default.conf \
+ 	20-unhint-small-vera.conf \
+ 	30-metric-aliases.conf \
+ 	40-nonlatin.conf \
+@@ -392,7 +395,9 @@
+ config_DATA = $(DOC_FILES)
+ templatedir = $(TEMPLATEDIR)
+ template_DATA = \
++	10-antialias.conf		\
+ 	10-autohint.conf		\
++	10-hinting.conf			\
+ 	10-hinting-full.conf		\
+ 	10-hinting-medium.conf		\
+ 	10-hinting-none.conf		\
+@@ -416,6 +421,7 @@
+ 	49-sansserif.conf		\
+ 	50-user.conf			\
+ 	51-local.conf			\
++	53-monospace-lcd-filter.conf	\
+ 	60-generic.conf			\
+ 	60-latin.conf			\
+ 	65-fonts-persian.conf		\
