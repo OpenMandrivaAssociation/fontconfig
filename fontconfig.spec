@@ -70,6 +70,7 @@ BuildRequires:	devel(libfreetype)
 BuildRequires:	devel(libuuid)
 BuildRequires:	devel(libbz2)
 BuildRequires:	devel(libexpat)
+BuildRequires:	devel(libjson-c)
 %endif
 
 %description
