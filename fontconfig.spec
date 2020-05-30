@@ -1,14 +1,22 @@
+# wine and some of its dependencies use fontconfig
+%ifarch %{x86_64}
+%bcond_without compat32
+%else
+%bcond_with compat32
+%endif
 %define major 1
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 %define rebuild_doc 0
+%define lib32name %mklib32name %{name} %{major}
+%define dev32name %mklib32name %{name} -d
 
 %global optflags %{optflags} -O3
 
 Summary:	Font configuration library
 Name:		fontconfig
 Version:	2.13.1
-Release:	5
+Release:	6
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
@@ -57,6 +65,12 @@ BuildRequires:	docbook-dtd31-sgml
 BuildRequires:	docbook-dtd41-sgml
 %endif
 Requires(post): /bin/sh
+%if %{with compat32}
+BuildRequires:	devel(libfreetype)
+BuildRequires:	devel(libuuid)
+BuildRequires:	devel(libbz2)
+BuildRequires:	devel(libexpat)
+%endif
 
 %description
 Fontconfig is designed to locate fonts within the
@@ -80,6 +94,25 @@ Requires:	%{libname} = %{EVRD}
 The fontconfig-devel package includes the header files,
 and developer docs for the fontconfig package.
 
+%if %{with compat32}
+%package -n %{lib32name}
+Summary:	Font configuration and customization library (32-bit)
+Group:		System/Libraries
+
+%description -n	%{lib32name}
+This package contains the shared library for %{name}.
+
+%package -n %{dev32name}
+Summary:	Font configuration and customization library (32-bit)
+Group:		Development/C
+Requires:	%{devname} = %{EVRD}
+Requires:	%{lib32name} = %{EVRD}
+
+%description -n	%{dev32name}
+The fontconfig-devel package includes the header files,
+and developer docs for the fontconfig package.
+%endif
+
 %prep
 %autosetup -p1
 
@@ -95,16 +128,34 @@ autoreconf -fi
 export HASDOCBOOK=no
 %endif
 
+export CONFIGURE_TOP="$(pwd)"
+
+%if %{with compat32}
+mkdir build32
+cd build32
+%configure32 \
+	--disable-static \
+	--localstatedir=/var \
+	--disable-libxml2 \
+	--with-add-fonts="/usr/share/fonts,/usr/share/X11/fonts/Type1,/usr/share/X11/fonts/TTF,/usr/local/share/fonts,/usr/lib/X11/fonts,/opt/ttfonts"
+%make_build LIBS="-lbz2"
+cd ..
+%endif
+
+mkdir build
+cd build
 %configure \
 	--disable-static \
 	--localstatedir=/var \
 	--disable-libxml2 \
 	--with-add-fonts="/usr/share/fonts,/usr/share/X11/fonts/Type1,/usr/share/X11/fonts/TTF,/usr/local/share/fonts,/usr/lib/X11/fonts,/opt/ttfonts"
-
 %make_build LIBS="-lbz2"
 
 %install
-%make_install
+%if %{with compat32}
+%make_install -C build32
+%endif
+%make_install -C build
 
 mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
 cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} %{buildroot}%{_sysconfdir}/fonts/conf.d
@@ -155,3 +206,12 @@ rm -f %{_var}/cache/fontconfig/*.cache-2
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
 %{_mandir}/man3/*
+
+%if %{with compat32}
+%files -n %{lib32name}
+%{_prefix}/lib/libfontconfig.so.%{major}*
+
+%files -n %{dev32name}
+%{_prefix}/lib/*.so
+%{_prefix}/lib/pkgconfig/*
+%endif
