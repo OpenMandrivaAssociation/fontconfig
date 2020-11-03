@@ -71,6 +71,8 @@ BuildRequires:	devel(libuuid)
 BuildRequires:	devel(libbz2)
 BuildRequires:	devel(libexpat)
 BuildRequires:	devel(libjson-c)
+BuildRequires:	devel(libz)
+BuildRequires:	devel(libpng16)
 %endif
 
 %description
