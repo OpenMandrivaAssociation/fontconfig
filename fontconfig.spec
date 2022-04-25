@@ -16,7 +16,7 @@
 Summary:	Font configuration library
 Name:		fontconfig
 Version:	2.13.1
-Release:	7
+Release:	8
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
@@ -110,6 +110,7 @@ Summary:	Font configuration and customization library (32-bit)
 Group:		Development/C
 Requires:	%{devname} = %{EVRD}
 Requires:	%{lib32name} = %{EVRD}
+Requires:	devel(libexpat)
 
 %description -n	%{dev32name}
 The fontconfig-devel package includes the header files,
@@ -197,8 +198,8 @@ rm -f %{_var}/cache/fontconfig/*.cache-2
 %config %{_sysconfdir}/fonts/fonts.conf
 %config %{_sysconfdir}/fonts/conf.d/*.conf
 %config %{_sysconfdir}/fonts/conf.d/README
-%{_mandir}/man1/*
-%{_mandir}/man5/*
+%doc %{_mandir}/man1/*
+%doc %{_mandir}/man5/*
 
 %files -n %{libname}
 %{_libdir}/libfontconfig.so.%{major}*
@@ -208,7 +209,7 @@ rm -f %{_var}/cache/fontconfig/*.cache-2
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
-%{_mandir}/man3/*
+%doc %{_mandir}/man3/*
 
 %if %{with compat32}
 %files -n %{lib32name}
