@@ -16,7 +16,7 @@
 Summary:	Font configuration library
 Name:		fontconfig
 Version:	2.13.1
-Release:	8
+Release:	9
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
@@ -24,7 +24,7 @@ Source0:	http://www.freedesktop.org/software/fontconfig/release/%{name}-%{versio
 # (fc) 2.3.2-3mdk prefer urw fonts
 Source1:	30-mdv-urwfonts.conf
 # (fc) 2.3.2-3mdk disable antialiasing for some fonts
-Source3:	20-mdv-disable-antialias.conf
+#Source3:	20-mdv-disable-antialias.conf
 # (tpg) use Antiqua Poltawski for polish language
 Source4:	65-lang-pl.conf
 # (fc) 2.3.2-3mdk  Avoid KDE/QT uses some bitmapped fonts (guisseppe)
@@ -162,7 +162,7 @@ cd build
 %make_install -C build
 
 mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
-cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} %{buildroot}%{_sysconfdir}/fonts/conf.d
+cp %{SOURCE1} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} %{buildroot}%{_sysconfdir}/fonts/conf.d
 
 ln -s ../../..%{_datadir}/%{name}/conf.avail/25-unhint-nonlatin.conf %{buildroot}%{_sysconfdir}/fonts/conf.d
 ln -s ../../..%{_datadir}/%{name}/conf.avail/10-sub-pixel-rgb.conf %{buildroot}%{_sysconfdir}/fonts/conf.d
