@@ -42,7 +42,7 @@ Patch3:		fontconfig-2.11.95-wine-assert-nonfatal.patch
 
 Patch12:         fontconfig-2.13.0-fonts-nanum.patch
 Patch13:         fontconfig-2.13.0-lcdfilterlegacy.patch
-Patch15:         fontconfig-2.13.0-old-diff-gz-06-ubuntu-lcddefault.patch
+#Patch15:         fontconfig-2.13.0-old-diff-gz-06-ubuntu-lcddefault.patch
 #Patch17:         fontconfig-2.13.0-ubuntu-add-hinting-and-antialiasing-confs.patch
 #Patch18:         fontconfig-2.13.0-ubuntu-add-monospace-lcd-filter-conf.patch
 
