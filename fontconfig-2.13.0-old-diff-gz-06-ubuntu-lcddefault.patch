@@ -1,7 +1,7 @@
-diff -ur fontconfig-2.13.0/conf.d/Makefile.am fontconfig-2.13.0_patched/conf.d/Makefile.am
---- fontconfig-2.13.0/conf.d/Makefile.am	2017-10-12 12:03:39.000000000 +0300
-+++ fontconfig-2.13.0_patched/conf.d/Makefile.am	2018-09-11 16:58:01.001861533 +0300
-@@ -26,8 +26,11 @@
+diff -up fontconfig-2.14.0/conf.d/Makefile.am.6~ fontconfig-2.14.0/conf.d/Makefile.am
+--- fontconfig-2.14.0/conf.d/Makefile.am.6~	2022-09-27 02:12:58.101645315 +0200
++++ fontconfig-2.14.0/conf.d/Makefile.am	2022-09-27 02:14:38.715289024 +0200
+@@ -30,6 +30,8 @@ DOC_SOURCES = README.in
  DOC_FILES = $(DOC_SOURCES:.in=)
  
  CONF_LINKS = \
@@ -9,55 +9,48 @@ diff -ur fontconfig-2.13.0/conf.d/Makefile.am fontconfig-2.13.0_patched/conf.d/M
 +	10-hinting.conf \
  	10-hinting-$(PREFERRED_HINTING).conf	\
  	10-scale-bitmap-fonts.conf \
-+	11-lcdfilter-default.conf \
- 	20-unhint-small-vera.conf \
- 	30-metric-aliases.conf \
- 	40-nonlatin.conf \
-@@ -52,7 +55,9 @@
- 
- templatedir = $(TEMPLATEDIR)
+ 	11-lcdfilter-default.conf \
+@@ -60,7 +62,9 @@ templatedir = $(TEMPLATEDIR)
  template_DATA =				\
+ 	05-reset-dirs-sample.conf	\
+ 	09-autohint-if-no-hinting.conf	\
 +	10-antialias.conf		\
  	10-autohint.conf		\
 +	10-hinting.conf			\
  	10-hinting-full.conf		\
  	10-hinting-medium.conf		\
  	10-hinting-none.conf		\
-@@ -75,6 +80,7 @@
- 	45-latin.conf			\
+@@ -86,6 +90,7 @@ template_DATA =				\
  	49-sansserif.conf		\
  	50-user.conf			\
-+	53-monospace-lcd-filter.conf	\
  	51-local.conf			\
++	53-monospace-lcd-filter.conf	\
  	60-generic.conf			\
  	60-latin.conf			\
-diff -ur fontconfig-2.13.0/conf.d/Makefile.in fontconfig-2.13.0_patched/conf.d/Makefile.in
---- fontconfig-2.13.0/conf.d/Makefile.in	2018-03-06 06:31:57.000000000 +0300
-+++ fontconfig-2.13.0_patched/conf.d/Makefile.in	2018-09-11 16:59:47.311858753 +0300
-@@ -368,8 +368,11 @@
+ 	65-fonts-persian.conf		\
+diff -up fontconfig-2.14.0/conf.d/Makefile.in.6~ fontconfig-2.14.0/conf.d/Makefile.in
+--- fontconfig-2.14.0/conf.d/Makefile.in.6~	2022-03-31 09:41:24.000000000 +0200
++++ fontconfig-2.14.0/conf.d/Makefile.in	2022-09-27 02:15:26.411595004 +0200
+@@ -386,6 +386,8 @@ BUILT_SOURCES = \
  DOC_SOURCES = README.in
  DOC_FILES = $(DOC_SOURCES:.in=)
  CONF_LINKS = \
--	10-hinting-$(PREFERRED_HINTING).conf	\
 +	10-antialias.conf \
 +	10-hinting.conf \
-+	10-hinting-$(PREFERRED_HINTING).conf \
+ 	10-hinting-$(PREFERRED_HINTING).conf	\
  	10-scale-bitmap-fonts.conf \
-+	11-lcdfilter-default.conf \
- 	20-unhint-small-vera.conf \
- 	30-metric-aliases.conf \
- 	40-nonlatin.conf \
-@@ -392,7 +395,9 @@
- config_DATA = $(DOC_FILES)
- templatedir = $(TEMPLATEDIR)
+ 	11-lcdfilter-default.conf \
+@@ -414,7 +416,9 @@ templatedir = $(TEMPLATEDIR)
  template_DATA = \
+ 	05-reset-dirs-sample.conf	\
+ 	09-autohint-if-no-hinting.conf	\
 +	10-antialias.conf		\
  	10-autohint.conf		\
 +	10-hinting.conf			\
  	10-hinting-full.conf		\
  	10-hinting-medium.conf		\
  	10-hinting-none.conf		\
-@@ -416,6 +421,7 @@
+@@ -440,6 +444,7 @@ template_DATA = \
  	49-sansserif.conf		\
  	50-user.conf			\
  	51-local.conf			\

@@ -15,12 +15,12 @@
 
 Summary:	Font configuration library
 Name:		fontconfig
-Version:	2.13.1
-Release:	8
+Version:	2.14.0
+Release:	1
 License:	MIT
 Group:		System/X11
 Url:		http://fontconfig.org/
-Source0:	http://www.freedesktop.org/software/fontconfig/release/%{name}-%{version}.tar.bz2
+Source0:	http://www.freedesktop.org/software/fontconfig/release/%{name}-%{version}.tar.xz
 # (fc) 2.3.2-3mdk prefer urw fonts
 Source1:	30-mdv-urwfonts.conf
 # (fc) 2.3.2-3mdk disable antialiasing for some fonts
@@ -35,7 +35,6 @@ Source8:	26-mdv-no-embeddedbitmap.conf
 Source10:	25-no-bitmap-fedora.conf
 
 Patch0:		https://src.fedoraproject.org/cgit/rpms/fontconfig.git/plain/fontconfig-sleep-less.patch
-Patch1:		https://src.fedoraproject.org/cgit/rpms/fontconfig.git/plain/fontconfig-stop-cleanup-uuid.patch
 Patch2:		fontconfig-omdv-config.patch
 Patch3:		fontconfig-2.11.95-wine-assert-nonfatal.patch
 

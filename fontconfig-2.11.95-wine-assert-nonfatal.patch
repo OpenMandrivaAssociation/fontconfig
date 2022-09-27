@@ -1,12 +1,13 @@
---- fontconfig-2.11.95/src/fcweight.c.omv~	2016-06-03 23:22:39.335138695 +0200
-+++ fontconfig-2.11.95/src/fcweight.c	2016-06-03 23:24:28.284082974 +0200
-@@ -45,7 +45,8 @@ static int lerp(int x, int x1, int x2, i
+diff -up fontconfig-2.14.0/src/fcweight.c.3~ fontconfig-2.14.0/src/fcweight.c
+--- fontconfig-2.14.0/src/fcweight.c.3~	2022-09-27 02:11:48.937204365 +0200
++++ fontconfig-2.14.0/src/fcweight.c	2022-09-27 02:12:41.533539573 +0200
+@@ -45,7 +45,8 @@ static double lerp(double x, int x1, int
  {
    int dx = x2 - x1;
    int dy = y2 - y1;
 -  assert (dx > 0 && dy >= 0 && x1 <= x && x <= x2);
-+  if (!(dx > 0 && dy >= 0 && x1 <= x && x <= x2))
++  if (! (dx > 0 && dy >= 0 && x1 <= x && x <= x2) )
 +    fprintf(stderr, "lerp called with bad parameters %d,%d,%d,%d,%d,%d\n", x, x1, x2, y1, y2);
-   return y1 + (dy*(x-x1) + dx/2) / dx;
+   return y1 + (x-x1) * dy / dx;
  }
  

@@ -1,6 +1,7 @@
---- fontconfig-2.12.6/conf.d/45-latin.conf.0001~	2016-12-02 04:22:19.000000000 +0100
-+++ fontconfig-2.12.6/conf.d/45-latin.conf	2017-10-18 17:40:56.294244729 +0200
-@@ -58,6 +58,10 @@
+diff -up fontconfig-2.14.0/conf.d/45-latin.conf.2~ fontconfig-2.14.0/conf.d/45-latin.conf
+--- fontconfig-2.14.0/conf.d/45-latin.conf.2~	2020-12-03 12:45:00.000000000 +0100
++++ fontconfig-2.14.0/conf.d/45-latin.conf	2022-09-27 02:09:32.093336510 +0200
+@@ -59,6 +59,10 @@
  		<default><family>serif</family></default>
  	</alias>
  	<alias>
@@ -11,7 +12,7 @@
  		<family>Palatino Linotype</family>
  		<default><family>serif</family></default>
  	</alias>
-@@ -70,6 +74,10 @@
+@@ -71,6 +75,10 @@
  		<default><family>serif</family></default>
  	</alias>
  	<alias>
@@ -22,7 +23,7 @@
  		<family>Times New Roman</family>
  		<default><family>serif</family></default>
  	</alias>
-@@ -149,6 +157,10 @@
+@@ -150,6 +158,10 @@
  		<default><family>sans-serif</family></default>
  	</alias>
  	<alias>
@@ -33,7 +34,7 @@
  		<family>Luxi Sans</family>
  		<default><family>sans-serif</family></default>
  	</alias>
-@@ -232,6 +244,14 @@
+@@ -237,6 +249,14 @@
  		<default><family>monospace</family></default>
  	</alias>
  	<alias>
@@ -48,66 +49,21 @@
  		<family>Terminal</family>
  		<default><family>monospace</family></default>
  	</alias>
---- fontconfig-2.12.6/conf.d/60-latin.conf.0001~	2016-12-02 04:22:19.000000000 +0100
-+++ fontconfig-2.12.6/conf.d/60-latin.conf	2017-10-18 17:40:56.295244727 +0200
-@@ -4,8 +4,9 @@
- 	<alias>
- 		<family>serif</family>
- 		<prefer>
--			<family>Bitstream Vera Serif</family>
-+			<family>Noto Serif</family>
- 			<family>DejaVu Serif</family>
-+			<family>Bitstream Vera Serif</family>
- 			<family>Times New Roman</family>
- 			<family>Thorndale AMT</family>
- 			<family>Luxi Serif</family>
-@@ -17,15 +18,16 @@
- 	<alias>
- 		<family>sans-serif</family>
- 		<prefer>
--			<family>Bitstream Vera Sans</family>
-+			<family>Noto Sans</family>
- 			<family>DejaVu Sans</family>
--			<family>Verdana</family>
--			<family>Arial</family>
--			<family>Albany AMT</family>
-+			<family>Bitstream Vera Sans</family>
- 			<family>Luxi Sans</family>
- 			<family>Nimbus Sans L</family>
- 			<family>Nimbus Sans</family>
-+			<family>Arial</family>
-+			<family>Albany AMT</family>
- 			<family>Helvetica</family>
-+			<family>Verdana</family>
- 			<family>Lucida Sans Unicode</family>
- 			<family>BPG Glaho International</family> <!-- lat,cyr,arab,geor -->
- 			<family>Tahoma</family> <!-- lat,cyr,greek,heb,arab,thai -->
-@@ -34,16 +36,18 @@
- 	<alias>
+diff -up fontconfig-2.14.0/conf.d/60-latin.conf.2~ fontconfig-2.14.0/conf.d/60-latin.conf
+--- fontconfig-2.14.0/conf.d/60-latin.conf.2~	2022-09-27 02:09:32.093336510 +0200
++++ fontconfig-2.14.0/conf.d/60-latin.conf	2022-09-27 02:11:29.054077867 +0200
+@@ -36,6 +36,7 @@
  		<family>monospace</family>
  		<prefer>
--			<family>Bitstream Vera Sans Mono</family>
+ 			<family>Noto Sans Mono</family>
 +			<family>Noto Mono</family>
-+			<family>Noto Sans Mono CJK SC</family>
  			<family>DejaVu Sans Mono</family>
-+			<family>Bitstream Vera Sans Mono</family>
  			<family>Inconsolata</family>
--			<family>Andale Mono</family>
--			<family>Courier New</family>
--			<family>Cumberland AMT</family>
- 			<family>Luxi Mono</family>
- 			<family>Nimbus Mono L</family>
- 			<family>Nimbus Mono</family>
- 			<family>Nimbus Mono PS</family>
-+			<family>Andale Mono</family>
-+			<family>Courier New</family>
-+			<family>Cumberland AMT</family>
- 			<family>Courier</family>
- 		</prefer>
- 	</alias>
---- fontconfig-2.12.6/conf.d/65-nonlatin.conf.0001~	2017-09-21 06:44:27.000000000 +0200
-+++ fontconfig-2.12.6/conf.d/65-nonlatin.conf	2017-10-18 17:42:21.831088808 +0200
-@@ -23,13 +23,25 @@
+ 			<family>Andale Mono</family>
+diff -up fontconfig-2.14.0/conf.d/65-nonlatin.conf.2~ fontconfig-2.14.0/conf.d/65-nonlatin.conf
+--- fontconfig-2.14.0/conf.d/65-nonlatin.conf.2~	2020-12-03 12:45:00.000000000 +0100
++++ fontconfig-2.14.0/conf.d/65-nonlatin.conf	2022-09-27 02:09:32.094336516 +0200
+@@ -24,13 +24,25 @@
  			<family>Sampige</family> <!-- kannada -->
  			<family>padmaa</family> <!-- gujarati -->
  			<family>Hapax Berbère</family> <!-- tifinagh -->
@@ -133,7 +89,7 @@
  			<family>ZYSong18030</family> <!-- han (zh-cn,zh-tw) -->
  			<family>HanyiSong</family> <!-- han (zh-cn,zh-tw) -->
  			<family>MgOpen Canonica</family>
-@@ -150,12 +162,18 @@
+@@ -151,12 +163,18 @@
  			<family>Sazanami Gothic</family>
  			<family>Kochi Gothic</family>
  			<family>AR PL KaitiM GB</family>
