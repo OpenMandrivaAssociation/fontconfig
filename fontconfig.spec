@@ -15,7 +15,7 @@
 
 Summary:	Font configuration library
 Name:		fontconfig
-Version:	2.14.0
+Version:	2.14.1
 Release:	1
 License:	MIT
 Group:		System/X11
@@ -23,27 +23,19 @@ Url:		http://fontconfig.org/
 Source0:	http://www.freedesktop.org/software/fontconfig/release/%{name}-%{version}.tar.xz
 # (fc) 2.3.2-3mdk prefer urw fonts
 Source1:	30-mdv-urwfonts.conf
-# (fc) 2.3.2-3mdk disable antialiasing for some fonts
-Source3:	20-mdv-disable-antialias.conf
 # (tpg) use Antiqua Poltawski for polish language
 Source4:	65-lang-pl.conf
-# (fc) 2.3.2-3mdk  Avoid KDE/QT uses some bitmapped fonts (guisseppe)
-Source5:	30-mdv-avoid-bitmap.conf
-# (fc) 2.4.2-1mdv disable embedded bitmap for big size (Mdv bug #25924)
-Source8:	26-mdv-no-embeddedbitmap.conf
 # (fc) 2.4.92-1mdv enable embeddedbitmap on some CJK fonts (Fedora)
-Source10:	25-no-bitmap-fedora.conf
+Source10:	https://src.fedoraproject.org/rpms/fontconfig/raw/rawhide/f/25-no-bitmap-fedora.conf
 
 Patch0:		https://src.fedoraproject.org/cgit/rpms/fontconfig.git/plain/fontconfig-sleep-less.patch
 Patch2:		fontconfig-omdv-config.patch
 Patch3:		fontconfig-2.11.95-wine-assert-nonfatal.patch
-
-
-Patch12:         fontconfig-2.13.0-fonts-nanum.patch
-Patch13:         fontconfig-2.13.0-lcdfilterlegacy.patch
-Patch15:         fontconfig-2.13.0-old-diff-gz-06-ubuntu-lcddefault.patch
-Patch17:         fontconfig-2.13.0-ubuntu-add-hinting-and-antialiasing-confs.patch
-Patch18:         fontconfig-2.13.0-ubuntu-add-monospace-lcd-filter-conf.patch
+Patch12:	fontconfig-2.13.0-fonts-nanum.patch
+Patch13:	fontconfig-2.13.0-lcdfilterlegacy.patch
+Patch15:	fontconfig-2.13.0-old-diff-gz-06-ubuntu-lcddefault.patch
+Patch17:	fontconfig-2.13.0-ubuntu-add-hinting-and-antialiasing-confs.patch
+Patch18:	fontconfig-2.13.0-ubuntu-add-monospace-lcd-filter-conf.patch
 
 BuildRequires:	ed
 BuildRequires:	pkgconfig(expat)
@@ -63,7 +55,7 @@ BuildRequires:	docbook-utils-pdf
 BuildRequires:	docbook-dtd31-sgml
 BuildRequires:	docbook-dtd41-sgml
 %endif
-Requires(post): /bin/sh
+Requires(post):	/bin/sh
 %if %{with compat32}
 BuildRequires:	devel(libfreetype)
 BuildRequires:	devel(libuuid)
@@ -83,7 +75,7 @@ applications.
 Summary:	Font configuration and customization library
 Group:		System/Libraries
 
-%description -n	%{libname}
+%description -n %{libname}
 This package contains the shared library for %{name}.
 
 %package -n %{devname}
@@ -92,7 +84,7 @@ Group:		Development/C
 Provides:	%{name}-devel = %{EVRD}
 Requires:	%{libname} = %{EVRD}
 
-%description -n	%{devname}
+%description -n %{devname}
 The fontconfig-devel package includes the header files,
 and developer docs for the fontconfig package.
 
@@ -101,7 +93,7 @@ and developer docs for the fontconfig package.
 Summary:	Font configuration and customization library (32-bit)
 Group:		System/Libraries
 
-%description -n	%{lib32name}
+%description -n %{lib32name}
 This package contains the shared library for %{name}.
 
 %package -n %{dev32name}
@@ -111,7 +103,7 @@ Requires:	%{devname} = %{EVRD}
 Requires:	%{lib32name} = %{EVRD}
 Requires:	devel(libexpat)
 
-%description -n	%{dev32name}
+%description -n %{dev32name}
 The fontconfig-devel package includes the header files,
 and developer docs for the fontconfig package.
 %endif
@@ -138,9 +130,10 @@ mkdir build32
 cd build32
 %configure32 \
 	--disable-static \
-	--localstatedir=/var \
+	--localstatedir=%{_var} \
 	--disable-libxml2 \
-	--with-add-fonts="/usr/share/fonts,/usr/share/X11/fonts/Type1,/usr/share/X11/fonts/TTF,/usr/local/share/fonts,/usr/lib/X11/fonts,/opt/ttfonts"
+	--with-add-fonts="%{_datadir}/fonts,%{_datadir}/X11/fonts/Type1,%{_datadir}/X11/fonts/TTF,%{_prefix}/local/share/fonts,%{_prefix}/lib/X11/fonts,/opt/ttfonts"
+
 %make_build LIBS="-lbz2"
 cd ..
 %endif
@@ -149,9 +142,10 @@ mkdir build
 cd build
 %configure \
 	--disable-static \
-	--localstatedir=/var \
+	--localstatedir=%{_var} \
 	--disable-libxml2 \
-	--with-add-fonts="/usr/share/fonts,/usr/share/X11/fonts/Type1,/usr/share/X11/fonts/TTF,/usr/local/share/fonts,/usr/lib/X11/fonts,/opt/ttfonts"
+	--with-add-fonts="%{_datadir}/fonts,%{_datadir}/X11/fonts/Type1,%{_datadir}/X11/fonts/TTF,%{_prefix}/local/share/fonts,%{_prefix}/lib/X11/fonts,/opt/ttfonts"
+
 %make_build LIBS="-lbz2"
 
 %install
@@ -161,10 +155,9 @@ cd build
 %make_install -C build
 
 mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
-cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} %{buildroot}%{_sysconfdir}/fonts/conf.d
+cp %{SOURCE1} %{SOURCE4} %{SOURCE10} %{buildroot}%{_sysconfdir}/fonts/conf.d
 
 ln -s ../../..%{_datadir}/%{name}/conf.avail/25-unhint-nonlatin.conf %{buildroot}%{_sysconfdir}/fonts/conf.d
-ln -s ../../..%{_datadir}/%{name}/conf.avail/10-sub-pixel-rgb.conf %{buildroot}%{_sysconfdir}/fonts/conf.d
 
 # remove unpackaged files
 rm -rf %{buildroot}%{_datadir}/doc/fontconfig 
@@ -173,16 +166,16 @@ rm -rf %{buildroot}%{_datadir}/doc/fontconfig
 %find_lang %{name}-conf
 
 %post
-%{_bindir}/fc-cache --force --system-only >/dev/null
+HOME=/root %{_bindir}/fc-cache --force --system-only >/dev/null
 
 %triggerprein -- fontconfig < 2.4.0
 rm -f %{_var}/cache/fontconfig/*.cache-2
 
 %transfiletriggerin -- /usr/share/fonts /usr/share/X11/fonts/Type1 /usr/local/share/fonts /usr/lib/X11/fonts /opt/ttfonts
-%{_bindir}/fc-cache -s
+HOME=/root %{_bindir}/fc-cache -s
 
 %transfiletriggerpostun -- /usr/share/fonts /usr/share/X11/fonts/Type1 /usr/local/share/fonts /usr/lib/X11/fonts /opt/ttfonts
-%{_bindir}/fc-cache -s
+HOME=/root %{_bindir}/fc-cache -s
 
 %files -f %{name}.lang -f %{name}-conf.lang
 %doc README AUTHORS COPYING doc/fontconfig-user.html doc/fontconfig-user.txt
@@ -196,7 +189,7 @@ rm -f %{_var}/cache/fontconfig/*.cache-2
 # those files must NOT have noreplace option
 %config %{_sysconfdir}/fonts/fonts.conf
 %config %{_sysconfdir}/fonts/conf.d/*.conf
-%config %{_sysconfdir}/fonts/conf.d/README
+%doc %{_sysconfdir}/fonts/conf.d/README
 %doc %{_mandir}/man1/*
 %doc %{_mandir}/man5/*
 
