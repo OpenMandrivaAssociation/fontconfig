@@ -19,7 +19,7 @@ Version:	2.14.2
 Release:	1
 License:	MIT
 Group:		System/X11
-Url:		http://fontconfig.org/
+Url:		https://fontconfig.org/
 Source0:	http://www.freedesktop.org/software/fontconfig/release/%{name}-%{version}.tar.xz
 # (fc) 2.3.2-3mdk prefer urw fonts
 Source1:	30-mdv-urwfonts.conf
