@@ -5,10 +5,12 @@
 %bcond_with compat32
 %endif
 %define major 1
-%define libname %mklibname %{name} %{major}
+%define oldlibname %mklibname %{name} %{major}
+%define libname %mklibname %{name}
 %define devname %mklibname %{name} -d
 %define rebuild_doc 0
-%define lib32name %mklib32name %{name} %{major}
+%define oldlib32name %mklib32name %{name} %{major}
+%define lib32name %mklib32name %{name}
 %define dev32name %mklib32name %{name} -d
 
 %global optflags %{optflags} -O3
@@ -74,6 +76,8 @@ applications.
 %package -n %{libname}
 Summary:	Font configuration and customization library
 Group:		System/Libraries
+# Renamed before 6.0 2025-01-13
+%rename %{oldlibname}
 
 %description -n %{libname}
 This package contains the shared library for %{name}.
@@ -92,6 +96,8 @@ and developer docs for the fontconfig package.
 %package -n %{lib32name}
 Summary:	Font configuration and customization library (32-bit)
 Group:		System/Libraries
+# Renamed before 6.0 2025-01-13
+%rename %{oldlib32name}
 
 %description -n %{lib32name}
 This package contains the shared library for %{name}.
@@ -178,7 +184,7 @@ HOME=/root %{_bindir}/fc-cache -s
 HOME=/root %{_bindir}/fc-cache -s
 
 %files -f %{name}.lang -f %{name}-conf.lang
-%doc README AUTHORS COPYING doc/fontconfig-user.html doc/fontconfig-user.txt
+%doc AUTHORS COPYING doc/fontconfig-user.html doc/fontconfig-user.txt
 %dir %{_var}/cache/fontconfig
 %{_bindir}/*
 %dir %{_sysconfdir}/fonts
