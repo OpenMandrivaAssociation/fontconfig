@@ -1,11 +1,11 @@
-diff -ur fontconfig-2.13.0/src/fcname.c fontconfig-2.13.0_patched/src/fcname.c
---- fontconfig-2.13.0/src/fcname.c	2017-11-20 15:02:20.000000000 +0300
-+++ fontconfig-2.13.0_patched/src/fcname.c	2018-09-11 16:33:57.891899331 +0300
-@@ -198,6 +198,7 @@
-     { (FcChar8 *) "lcddefault",	    "lcdfilter",    FC_LCD_DEFAULT },
-     { (FcChar8 *) "lcdlight",	    "lcdfilter",    FC_LCD_LIGHT },
-     { (FcChar8 *) "lcdlegacy",	    "lcdfilter",    FC_LCD_LEGACY },
-+    { (FcChar8 *) "lcdfilterlegacy",	    "lcdfilter",    FC_LCD_LEGACY },
+diff -uraN fontconfig-2.17.1/src/fcname.c omv-fontconfig-2.17.1/src/fcname.c
+--- fontconfig-2.17.1/src/fcname.c	2025-07-02 06:46:34.000000000 +0200
++++ omv-fontconfig-2.17.1/src/fcname.c	2025-09-06 00:45:47.607993972 +0200
+@@ -203,6 +203,7 @@
+     { (FC8) "lcddefault",     "lcdfilter",      FC_LCD_DEFAULT          },
+     { (FC8) "lcdlight",       "lcdfilter",      FC_LCD_LIGHT            },
+     { (FC8) "lcdlegacy",      "lcdfilter",      FC_LCD_LEGACY           },
++    { (FC8) "lcdfilterlegacy",	    "lcdfilter",    FC_LCD_LEGACY },
  };
  
- #define NUM_FC_CONSTANTS   (sizeof _FcBaseConstants/sizeof _FcBaseConstants[0])
+ #define NUM_FC_CONSTANTS (sizeof _FcBaseConstants / sizeof _FcBaseConstants[0])

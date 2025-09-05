@@ -17,12 +17,13 @@
 
 Summary:	Font configuration library
 Name:		fontconfig
-Version:	2.16.0
+Version:	2.17.1
 Release:	1
 License:	MIT
 Group:		System/X11
 Url:		https://fontconfig.org/
-Source0:	http://www.freedesktop.org/software/fontconfig/release/%{name}-%{version}.tar.xz
+#Source0:	http://www.freedesktop.org/software/fontconfig/release/%{name}-%{version}.tar.xz
+Source0:	https://gitlab.freedesktop.org/fontconfig/fontconfig/-/archive/%{version}/fontconfig-%{version}.tar.bz2
 # (fc) 2.3.2-3mdk prefer urw fonts
 Source1:	30-mdv-urwfonts.conf
 # (tpg) use Antiqua Poltawski for polish language
@@ -184,7 +185,7 @@ HOME=/root %{_bindir}/fc-cache -s
 HOME=/root %{_bindir}/fc-cache -s
 
 %files -f %{name}.lang -f %{name}-conf.lang
-%doc AUTHORS COPYING doc/fontconfig-user.html doc/fontconfig-user.txt
+%doc AUTHORS COPYING
 %dir %{_var}/cache/fontconfig
 %{_bindir}/*
 %dir %{_sysconfdir}/fonts
@@ -196,18 +197,17 @@ HOME=/root %{_bindir}/fc-cache -s
 %config %{_sysconfdir}/fonts/fonts.conf
 %config %{_sysconfdir}/fonts/conf.d/*.conf
 %doc %{_sysconfdir}/fonts/conf.d/README
-%doc %{_mandir}/man1/*
-%doc %{_mandir}/man5/*
+#doc %{_mandir}/man1/*
+#doc %{_mandir}/man5/*
 
 %files -n %{libname}
 %{_libdir}/libfontconfig.so.%{major}*
 
 %files -n %{devname}
-%doc doc/fontconfig-devel.txt 
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
-%doc %{_mandir}/man3/*
+#doc %{_mandir}/man3/*
 
 %if %{with compat32}
 %files -n %{lib32name}
