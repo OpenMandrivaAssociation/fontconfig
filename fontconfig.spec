@@ -185,7 +185,7 @@ HOME=/root %{_bindir}/fc-cache -s
 HOME=/root %{_bindir}/fc-cache -s
 
 %files -f %{name}.lang -f %{name}-conf.lang
-%doc AUTHORS COPYING doc/fontconfig-user.html doc/fontconfig-user.txt
+%doc AUTHORS COPYING
 %dir %{_var}/cache/fontconfig
 %{_bindir}/*
 %dir %{_sysconfdir}/fonts
@@ -197,8 +197,8 @@ HOME=/root %{_bindir}/fc-cache -s
 %config %{_sysconfdir}/fonts/fonts.conf
 %config %{_sysconfdir}/fonts/conf.d/*.conf
 %doc %{_sysconfdir}/fonts/conf.d/README
-%doc %{_mandir}/man1/*
-%doc %{_mandir}/man5/*
+#doc %{_mandir}/man1/*
+#doc %{_mandir}/man5/*
 
 %files -n %{libname}
 %{_libdir}/libfontconfig.so.%{major}*
