@@ -17,12 +17,13 @@
 
 Summary:	Font configuration library
 Name:		fontconfig
-Version:	2.16.0
+Version:	2.17.1
 Release:	1
 License:	MIT
 Group:		System/X11
 Url:		https://fontconfig.org/
-Source0:	http://www.freedesktop.org/software/fontconfig/release/%{name}-%{version}.tar.xz
+#Source0:	http://www.freedesktop.org/software/fontconfig/release/%{name}-%{version}.tar.xz
+Source0:	https://gitlab.freedesktop.org/fontconfig/fontconfig/-/archive/%{version}/fontconfig-%{version}.tar.bz2
 # (fc) 2.3.2-3mdk prefer urw fonts
 Source1:	30-mdv-urwfonts.conf
 # (tpg) use Antiqua Poltawski for polish language
