@@ -203,7 +203,7 @@ HOME=/root %{_bindir}/fc-cache -s
 %{_libdir}/libfontconfig.so.%{major}*
 
 %files -n %{devname}
-%doc doc/fontconfig-devel doc/fontconfig-devel.txt 
+%doc doc/fontconfig-devel.txt 
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
