@@ -17,7 +17,7 @@
 
 Summary:	Font configuration library
 Name:		fontconfig
-Version:	2.15.0
+Version:	2.16.0
 Release:	1
 License:	MIT
 Group:		System/X11
@@ -203,7 +203,7 @@ HOME=/root %{_bindir}/fc-cache -s
 %{_libdir}/libfontconfig.so.%{major}*
 
 %files -n %{devname}
-%doc doc/fontconfig-devel doc/fontconfig-devel.txt 
+%doc doc/fontconfig-devel.txt 
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
