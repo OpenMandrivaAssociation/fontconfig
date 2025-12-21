@@ -40,6 +40,11 @@ Patch15:	fontconfig-2.13.0-old-diff-gz-06-ubuntu-lcddefault.patch
 Patch17:	fontconfig-2.13.0-ubuntu-add-hinting-and-antialiasing-confs.patch
 Patch18:	fontconfig-2.13.0-ubuntu-add-monospace-lcd-filter-conf.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	ed
 BuildRequires:	pkgconfig(expat)
 BuildRequires:	lynx
