@@ -146,7 +146,7 @@ cd build32
 	--disable-libxml2 \
 	--with-add-fonts="%{_datadir}/fonts,%{_datadir}/X11/fonts/Type1,%{_datadir}/X11/fonts/TTF,%{_prefix}/local/share/fonts,%{_prefix}/lib/X11/fonts,/opt/ttfonts"
 
-%make_build LIBS="-lbz2"
+%make_build LIBS="-lbz2" RM="rm -f"
 cd ..
 %endif
 
@@ -158,13 +158,13 @@ cd build
 	--disable-libxml2 \
 	--with-add-fonts="%{_datadir}/fonts,%{_datadir}/X11/fonts/Type1,%{_datadir}/X11/fonts/TTF,%{_prefix}/local/share/fonts,%{_prefix}/lib/X11/fonts,/opt/ttfonts"
 
-%make_build LIBS="-lbz2"
+%make_build LIBS="-lbz2" RM="rm -f"
 
 %install
 %if %{with compat32}
-%make_install -C build32
+%make_install -C build32 RM="rm -f"
 %endif
-%make_install -C build
+%make_install -C build RM="rm -f"
 
 mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
 cp %{SOURCE1} %{SOURCE4} %{SOURCE10} %{buildroot}%{_sysconfdir}/fonts/conf.d
