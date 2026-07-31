@@ -17,7 +17,7 @@
 
 Summary:	Font configuration library
 Name:		fontconfig
-Version:	2.17.1
+Version:	2.18.2
 Release:	1
 License:	MIT
 Group:		System/X11
@@ -31,11 +31,11 @@ Source4:	65-lang-pl.conf
 # (fc) 2.4.92-1mdv enable embeddedbitmap on some CJK fonts (Fedora)
 Source10:	https://src.fedoraproject.org/rpms/fontconfig/raw/rawhide/f/25-no-bitmap-fedora.conf
 
-Patch0:		https://src.fedoraproject.org/cgit/rpms/fontconfig.git/plain/fontconfig-sleep-less.patch
-Patch2:		fontconfig-omdv-config.patch
-Patch3:		fontconfig-2.11.95-wine-assert-nonfatal.patch
-Patch12:	fontconfig-2.13.0-fonts-nanum.patch
-Patch13:	fontconfig-2.13.0-lcdfilterlegacy.patch
+# dropped (no longer applies): Patch0:		https://src.fedoraproject.org/cgit/rpms/fontconfig.git/plain/fontconfig-sleep-less.patch
+# dropped (no longer applies): Patch2:		fontconfig-omdv-config.patch
+# dropped (no longer applies): Patch3:		fontconfig-2.11.95-wine-assert-nonfatal.patch
+# dropped (no longer applies): Patch12:	fontconfig-2.13.0-fonts-nanum.patch
+# dropped (no longer applies): Patch13:	fontconfig-2.13.0-lcdfilterlegacy.patch
 Patch15:	fontconfig-2.13.0-old-diff-gz-06-ubuntu-lcddefault.patch
 Patch17:	fontconfig-2.13.0-ubuntu-add-hinting-and-antialiasing-confs.patch
 Patch18:	fontconfig-2.13.0-ubuntu-add-monospace-lcd-filter-conf.patch
