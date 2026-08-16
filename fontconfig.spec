@@ -18,7 +18,7 @@
 Summary:	Font configuration library
 Name:		fontconfig
 Version:	2.18.3
-Release:	1
+Release:	2
 License:	MIT
 Group:		System/X11
 Url:		https://fontconfig.org/
@@ -136,6 +136,12 @@ export HASDOCBOOK=no
 %endif
 
 export CONFIGURE_TOP="$(pwd)"
+
+%if %{cross_compiling}
+# configure runs a va_copy test program; C99 va_copy is available on all
+# targets we bootstrap.
+export ac_cv_va_copy=C99
+%endif
 
 %if %{with compat32}
 mkdir build32
