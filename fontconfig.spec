@@ -146,6 +146,10 @@ export ac_cv_va_copy=C99
 %if %{with compat32}
 mkdir build32
 cd build32
+# i386 compiler-rt ships in cross-i686-openmandriva-linux-gnu-clang,
+# which this buildroot does not have. libgcc's 32-bit crt does.
+export CC="%{__cc} --rtlib=libgcc --unwindlib=libgcc"
+export CXX="%{__cxx} --rtlib=libgcc --unwindlib=libgcc"
 %configure32 \
 	--disable-static \
 	--localstatedir=%{_var} \
@@ -154,6 +158,7 @@ cd build32
 
 %make_build LIBS="-lbz2" RM="rm -f"
 cd ..
+unset CC CXX
 %endif
 
 mkdir build
